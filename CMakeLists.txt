@@ -1,0 +1,47 @@
+cmake_minimum_required(VERSION 3.21)
+project(libjoy)
+# SET(CMAKE_CXX_STANDARD 20)
+# SET(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CONAN_DISABLE_CHECK_COMPILER true)
+option(ENABLE_CONAN "Enable the Conan package manager for this project." ON)
+# include(cmake/Conan.cmake)
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
+
+# add_executable(taskflowtest)
+# target_sources(taskflowtest PUBLIC src/taskflowtest.cpp)
+# target_compile_options(taskflowtest PRIVATE "-std=c++20")
+
+# target_link_libraries(taskflowtest ${CONAN_LIBS_TASKFLOW})
+
+# add_executable(fmtshow)
+# target_sources(fmtshow PUBLIC src/fmtshow.cpp)
+# target_compile_options(fmtshow PRIVATE "-std=c++20")
+# target_link_libraries(fmtshow ${CONAN_LIBS_FMT})
+
+# add_executable(typecheck)
+# target_sources(typecheck PUBLIC src/checktype.cpp)
+# target_compile_options(typecheck PRIVATE "-std=c++20")
+# target_link_libraries(typecheck ${CONAN_LIBS})
+
+# add_executable(tomlcfg)
+# target_sources(tomlcfg PUBLIC src/tomlcfg.cpp)
+# target_compile_options(tomlcfg PRIVATE "-std=c++2b")
+# target_link_libraries(tomlcfg ${CONAN_LIBS})
+
+
+# add_executable(rotateseg)
+# target_sources(rotateseg PUBLIC src/rotation.cpp)
+# target_compile_options(rotateseg PRIVATE "-std=c++20")
+# target_link_libraries(rotateseg ${CONAN_LIBS})
+set(HEADS "da")
+file(GLOB SOURCE_FILES ${CMAKE_SOURCE_DIR}/src/base/*.cpp)
+message(STATUS "${SOURCE_FILES}")
+# install(FILES ${SOURCE_FILES} DESTINATION include/libjoy)
+add_executable(breakt)
+target_sources(breakt PUBLIC src/breakpadt.cpp)
+target_compile_options(breakt PUBLIC "-g")
+target_link_libraries(breakt ${CONAN_LIBS})
+
+add_subdirectory(src)

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+
+// 调度作为服务端
+service DeviceState {
+  rpc UpdateWorkArea(WorkAreaReq) returns(WorkAreaStateReply) {}
+}
+message WorkAreaReq{
+    double x = 1;
+}
+
+message WorkAreaStateReply{
+
+}

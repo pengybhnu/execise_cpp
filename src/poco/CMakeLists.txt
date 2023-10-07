@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.22)
+project(poco)
+add_executable(pocothead)
+target_sources(pocothead PUBLIC ${CMAKE_SOURCE_DIR}/src/poco/pocothead.cpp)
+target_compile_features(pocothead PRIVATE cxx_std_20)
+target_link_libraries(pocothead PRIVATE ${CONAN_LIBS}  pthread)
