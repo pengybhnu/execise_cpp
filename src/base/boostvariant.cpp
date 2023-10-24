@@ -1,4 +1,5 @@
 #define _USE_MATH_DEFINES
+#include <bit>
 #include <boost/variant2/variant.hpp>
 #include <cmath>
 #include <iostream>
@@ -25,6 +26,16 @@ double total_area(std::vector<variant<Rectangle, Circle>> const& v) {
   return s;
 }
 
+class Baseeq {
+ public:
+  bool operator==(Baseeq const& other) const { return i_ == other.i_; }
+  explicit operator bool() const { return i_ != 0; }
+  Baseeq(int i) : i_(i) {}
+
+ private:
+  int i_;
+};
+
 int main() {
   std::vector<variant<Rectangle, Circle>> v;
 
@@ -35,4 +46,23 @@ int main() {
   // std::endl; },
   //       v[0]);
   std::cout << "Total area: " << total_area(v) << std::endl;
+  float f = 123.0;
+  int i = std::bit_cast<int>(f);
+
+  Baseeq b(0);
+  Baseeq ba(1);
+  if (b) {
+    // cout not zero
+    std::cout << "not zero" << std::endl;
+
+  } else {
+    std::cout << "zero" << std::endl;
+  }
+  if (ba) {
+    // cout not zero
+    std::cout << "not zero" << std::endl;
+
+  } else {
+    std::cout << "zero" << std::endl;
+  }
 }

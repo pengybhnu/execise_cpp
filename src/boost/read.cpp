@@ -546,7 +546,9 @@ int main( int argc_, char** argv_ ) {
 	rx.bind_key( Replxx::KEY::shift( Replxx::KEY::F10 ), std::bind( &message, std::ref( rx ), "<S-F10>", _1 ) );
 	rx.bind_key( Replxx::KEY::shift( Replxx::KEY::F11 ), std::bind( &message, std::ref( rx ), "<S-F11>", _1 ) );
 	rx.bind_key( Replxx::KEY::shift( Replxx::KEY::F12 ), std::bind( &message, std::ref( rx ), "<S-F12>", _1 ) );
-	rx.bind_key( Replxx::KEY::control( Replxx::KEY::F1 ), std::bind( &message, std::ref( rx ), "<C-F1>", _1 ) );
+	rx.bind_key( Replxx::KEY::control( Replxx::KEY::F1 ), [](auto  x){ std::cout << "call f1" << std::endl;
+		return Replxx::ACTION_RESULT::RETURN;
+	 } );
 	rx.bind_key( Replxx::KEY::control( Replxx::KEY::F2 ), std::bind( &message, std::ref( rx ), "<C-F2>", _1 ) );
 	rx.bind_key( Replxx::KEY::control( Replxx::KEY::F3 ), std::bind( &message, std::ref( rx ), "<C-F3>", _1 ) );
 	rx.bind_key( Replxx::KEY::control( Replxx::KEY::F4 ), std::bind( &message, std::ref( rx ), "<C-F4>", _1 ) );

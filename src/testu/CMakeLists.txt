@@ -8,9 +8,18 @@ project(libcoro_test)
 add_executable(catch2t)
 target_sources(catch2t PUBLIC ${PROJECT_SOURCE_DIR}/fbstringt.cpp)
 target_compile_features(catch2t PRIVATE cxx_std_20)
-target_link_libraries(catch2t ${CONAN_LIBS_FOLLY} ${CONAN_LIBS_FMT} ${CONAN_LIBS_CATCH2})
+target_link_libraries(catch2t  CONAN_PKG::catch2)
 
 # add_executable(cathtest)
 # target_sources(cathtest PRIVATE ${PROJECT_SOURCE_DIR}/factest.cpp)
 # target_compile_features(cathtest PRIVATE cxx_std_20)
 # target_link_libraries(cathtest PRIVATE ${CONAN_LIBS_CATCH2})
+
+add_executable(doctestp)
+target_sources(doctestp PUBLIC ${PROJECT_SOURCE_DIR}/doctestf.cpp)
+target_link_libraries(doctestp ${CONAN_LIBS_FMT} ${CONAN_LIBS_DOCTEST})
+
+
+add_executable(doctest2f)
+target_sources(doctest2f PUBLIC ${PROJECT_SOURCE_DIR}/doctest2f.cpp)
+target_link_libraries(doctest2f ${CONAN_LIBS_FMT} ${CONAN_LIBS_DOCTEST})

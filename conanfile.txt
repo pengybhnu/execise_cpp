@@ -1,31 +1,31 @@
 [requires]
 fmt/10.1.0
-grpc/1.50.1
+# grpc/1.50.1
+protobuf/3.21.9
 paho-mqtt-cpp/1.2.0
 paho-mqtt-c/1.3.9
 boost/1.83.0
 zlib/1.2.12
 bzip2/1.0.8
 folly/2022.01.31.00
-zlib/1.2.12
 openssl/1.1.1q
 taskflow/3.6.0
 snappy/1.1.9
 tl-expected/1.1.0
-libunifex/cci.20220430
+# libunifex/cci.20220430
 range-v3/0.12.0
-cgal/5.3.2
+# cgal/5.6
 flatbuffers/23.5.26
 tomlplusplus/3.3.0
 sqlite_orm/1.8.2
 oatpp/1.2.0
 # andreasbuhr-cppcoro/cci.20210113
 libcoro/0.8
-c-ares/1.19.1
-sqlite3/3.43.0
+# c-ares/1.19.1
+# sqlite3/3.43.0
 # concurrencpp/0.1.7
 catch2/3.4.0
-poco/1.12.4
+# poco/1.12.4
 zstd/1.5.5
 lz4/1.9.4
 async_simple/1.2.0
@@ -33,6 +33,20 @@ asio/1.28.0
 breakpad/cci.20210521
 # readline/8.1.2
 replxx/0.0.4
+# ceres-solver/2.1.0
+osqp/0.6.2
+ms-gsl/4.0.0
+tcb-span/cci.20220616
+span-lite/0.10.3
+cereal/1.3.2
+serdepp/0.1.4.1
+toml11/3.7.1
+doctest/2.4.11
+tl-optional/1.1.0
+expected-lite/0.6.3
+mp-units/2.0.0
+opencv/4.5.5
+xz_utils/5.4.4
 [generators]
 # CMakeDeps
 # CMakeToolchain
@@ -43,8 +57,20 @@ cmake
 # andreasbuhr-cppcoro:shared=True 
 # paho-mqtt-c:shared=True # PACKAGE:OPTION=VALUE
 # openssl:shared=True
+opencv:with_gtk=False
+opencv:with_webp=False
+opencv:video=False
+opencv:videoio=False
+opencv:calib3d=False
+opencv:gapi=False
+opencv:with_tesseract=False
+opencv:with_quirc=False
+# opencv:with_ffmpeg=False
+
+
+
 # conan install .. --build=missing
 [tool_requires]
-cmake/3.27.0
+cmake/3.27.7
 [layout]
 cmake_layout

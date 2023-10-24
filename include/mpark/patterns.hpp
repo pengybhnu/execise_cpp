@@ -17,6 +17,6 @@
 #include "patterns/regex.hpp"
 #include "patterns/vis.hpp"
 #include "patterns/when.hpp"
-// #include "patterns/expected.hpp"
+#include "patterns/expected.hpp"
 
 #endif  // MPARK_PATTERNS_HPP

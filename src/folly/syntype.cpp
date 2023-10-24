@@ -81,6 +81,7 @@ int main(int argc, char* argv[]) {
     auto r2 = folly::makeUnexpected<std::string>("failed");
     // return r2;
   });
+
   // r2.then([](auto& v) { fmt::println("reason {}", v); });
   return 0;
 }

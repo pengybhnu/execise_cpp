@@ -71,5 +71,6 @@ int main(int argc, char* argv[]) {
   bar.wait();
   std::this_thread::sleep_for(2s);
   fmt::println("escaple {}", t.format_string());
+  boost::shared_ptr<int> p = boost::make_shared<int>(100);
   return 0;
 }

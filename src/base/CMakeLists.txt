@@ -3,17 +3,18 @@ project(base)
 
 add_executable(blobdata)
 target_sources(blobdata PUBLIC ${CMAKE_SOURCE_DIR}/src/base/sqliteorm.cpp)
-target_link_libraries(blobdata ${CONAN_LIBS})
+target_link_libraries(blobdata CONAN_PKG::sqlite_orm)
 
 add_executable(boostvar)
 target_sources(boostvar PUBLIC  ${CMAKE_SOURCE_DIR}/src/base/boostvariant.cpp)
-target_link_libraries(boostvar ${CONAN_LIBS})
+target_compile_options(boostvar PRIVATE "-std=c++20")
+target_link_libraries(boostvar CONAN_PKG::boost)
 
 add_executable(varmatch)
 target_sources(varmatch PUBLIC ${CMAKE_SOURCE_DIR}/src/base/variantmatch.cpp)
 target_include_directories(varmatch PUBLIC ${CMAKE_SOURCE_DIR}/include)
 target_compile_options(varmatch PRIVATE "-std=c++20")
-target_link_libraries(varmatch ${CONAN_LIBS})
+target_link_libraries(varmatch CONAN_PKG::fmt CONAN_PKG::boost CONAN_PKG::tl-expected  CONAN_PKG::expected-lite)
 
 add_executable(stacktraceb)
 target_sources(stacktraceb PUBLIC ${CMAKE_SOURCE_DIR}/src/base/stacktraceb.cpp)
@@ -35,3 +36,85 @@ target_link_libraries(stacktraceb PUBLIC ${CONAN_LIBS_BOOST} pthread dl)
 # target_compile_options(varmatch PRIVATE "-std=c++2b")
 # target_sources(rangeb PUBLIC  ${CMAKE_SOURCE_DIR}/src/base/rangeb.cpp)
 # target_link_libraries(rangeb ${CONAN_LIBS})
+
+add_executable(sharedptr)
+target_sources(sharedptr PUBLIC ${CMAKE_SOURCE_DIR}/src/base/shared.cpp)
+target_link_libraries(sharedptr ${CONAN_LIBS})
+
+
+add_executable(rangev)
+target_sources(rangev PUBLIC ${CMAKE_SOURCE_DIR}/src/base/ranges.cpp)
+target_link_libraries(rangev ${CONAN_LIBS})
+
+add_executable(spant)
+target_sources(spant PUBLIC ${CMAKE_SOURCE_DIR}/src/base/spand.cpp   ${CMAKE_SOURCE_DIR}/src/base/point.pb.cc)
+target_include_directories(spant PRIVATE ${CMAKE_SOURCE_DIR}/src)
+target_compile_features(spant PRIVATE  cxx_std_20)
+target_link_libraries(spant ${CONAN_LIBS})
+
+add_executable(cerealt)
+target_sources(cerealt PUBLIC ${CMAKE_SOURCE_DIR}/src/base/cerealt.cpp)
+target_link_libraries(cerealt CONAN_PKG::cereal CONAN_PKG::fmt )
+
+
+# CPMAddPackage(
+#   NAME simple_match
+#   GIT_REPOSITORY https://github.com/jbandela/simple_match.git
+#   GIT_TAG a3ab17f3d98db302de68ad85ed399a42ae41889e
+#   DOWNLOAD_ONLY True
+# )
+# if(simple_match_ADDED)
+#   add_library(simple_match INTERFACE IMPORTED)
+#   target_include_directories(simple_match SYSTEM INTERFACE "${simple_match_SOURCE_DIR}/include")
+# endif()
+# add_executable(simple_exe)
+# target_sources(simple_exe PUBLIC ${CMAKE_SOURCE_DIR}/src/base/simple_exe.cpp)
+# target_link_libraries(simple_exe simple_match)
+
+
+# CPMAddPackage(
+#   NAME stdexec
+#   GIT_REPOSITORY https://github.com/NVIDIA/stdexec.git
+#   GIT_TAG main
+# #   DOWNLOAD_ONLY True
+# )
+
+# https://github.com/apache/brpc.git
+
+# find_library(stdexec REQUREd)
+# add_executable(stdexect)
+# target_sources(stdexect PUBLIC ${CMAKE_SOURCE_DIR}/src/base/stdexec.cpp)
+# target_compile_options(stdexect PRIVATE "-std=c++20")
+# target_include_directories(stdexect PUBLIC  "${stdexec_SOURCE_DIR}/include")
+# target_link_libraries(stdexect PUBLIC 
+# stdexec 
+
+# ${CONAN_LIBS_FMT})
+
+
+# CPMAddPackage(
+#   NAME brpc
+#   GIT_REPOSITORY https://github.com/apache/brpc.git
+#   GIT_TAG 1.6.1
+# )
+
+add_executable(serdet)
+target_sources(serdet PUBLIC ${CMAKE_SOURCE_DIR}/src/base/serdep.cpp)
+target_compile_features(serdet PRIVATE  cxx_std_20)
+target_link_libraries(serdet CONAN_PKG::serdepp)
+
+add_executable(tloptional)
+target_sources(tloptional PUBLIC ${CMAKE_SOURCE_DIR}/src/base/tloptional.cpp)
+target_include_directories(tloptional PUBLIC ${CMAKE_SOURCE_DIR}/include)
+target_compile_features(tloptional PRIVATE  cxx_std_23)
+target_link_libraries(tloptional CONAN_PKG::tl-optional CONAN_PKG::fmt)
+
+
+add_executable(imageteset)
+target_sources(imageteset PUBLIC ${CMAKE_SOURCE_DIR}/src/base/imagetest.cpp)
+target_link_libraries(imageteset CONAN_PKG::opencv)
+
+add_executable(mpunits)
+target_sources(mpunits PUBLIC ${CMAKE_SOURCE_DIR}/src/base/mpunits.cpp)
+target_compile_features(mpunits PRIVATE  cxx_std_20)
+target_link_libraries(mpunits CONAN_PKG::mp-units)

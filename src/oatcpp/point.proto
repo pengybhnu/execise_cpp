@@ -5,6 +5,7 @@ package dispatch;
 message Geo{
     string name = 1;
     Point point = 2;
+    repeated uint32 lines = 3;
 }
 
 message Point {

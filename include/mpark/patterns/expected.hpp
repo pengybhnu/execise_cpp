@@ -41,16 +41,15 @@ auto err(const Pattern &pattern) {
 }
 template <typename Pattern, typename Value, typename F>
 auto try_match(const Ok<Pattern> &some, Value &&value, F &&f) {
-  return value ? try_match(some.pattern, *std::forward<Value>(value),
+  return value.has_value() ? try_match(some.pattern, *std::forward<Value>(value),
                            std::forward<F>(f))
                : no_match;
 }
 
 template <typename Pattern, typename Value, typename F>
 auto try_match(const Err<Pattern> &err, Value &&value, F &&f) {
-  return (value) ? try_match(err.pattern, *std::forward<Value>(value),
-                             std::forward<F>(f))
-                 : no_match;
+  return (value.has_value()) ? no_match:try_match(err.pattern, *std::forward<Value>(value),
+                             std::forward<F>(f));
 }
 }  // namespace mpark::patterns
 
