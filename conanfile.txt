@@ -33,7 +33,7 @@ asio/1.28.0
 breakpad/cci.20210521
 # readline/8.1.2
 replxx/0.0.4
-# ceres-solver/2.1.0
+ceres-solver/2.1.0
 osqp/0.6.2
 ms-gsl/4.0.0
 tcb-span/cci.20220616
@@ -47,6 +47,9 @@ expected-lite/0.6.3
 mp-units/2.0.0
 opencv/4.5.5
 xz_utils/5.4.4
+mdspan/0.6.0
+re2/20230901
+zstd/1.5.5
 [generators]
 # CMakeDeps
 # CMakeToolchain

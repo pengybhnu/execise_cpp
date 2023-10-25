@@ -1,4 +1,5 @@
 #include <optional>
+#include <type_traits>
 
 #include "fmt/format.h"
 #include "mpark/patterns.hpp"
@@ -71,7 +72,7 @@ int main(int argc, char* argv[]) {
   match(opt1)(
       pattern(some(arg)) = [](const auto& v) { fmt::println("value {}", v); },
       pattern(none) = [] { fmt::println("none"); });
-  if_let( pattern(some(arg))=opt1) = [](auto x){
+  if_let(pattern(some(arg)) = opt1) = [](auto x) {
     fmt::println("if let value {}", x);
   };
   // std::variant<int,double,char> p{90};
@@ -80,10 +81,13 @@ int main(int argc, char* argv[]) {
   p = 259;
 
   match(p)(
-      pattern(as<double>(arg)) = [](auto x) {
-    fmt::println("double {}", x); },
-      pattern(as<int>(arg)) = [](auto x) {
-    fmt::println("int {}", x); },
-      pattern(as<char>(arg)) = [](auto x) {
-    fmt::println("char {}", x); });
+      pattern(as<double>(arg)) = [](auto x) { fmt::println("double {}", x); },
+      pattern(as<int>(arg)) = [](auto x) { fmt::println("int {}", x); },
+      pattern(as<char>(arg)) = [](auto x) { fmt::println("char {}", x); });
+  int base = 10;
 }
+
+template <class T>
+class Tloptional {
+  static bool GetType() { return std::is_integral<T>::value; }
+};

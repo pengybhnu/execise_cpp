@@ -9,6 +9,8 @@
 #include "folly/FBString.h"
 #include "folly/ProducerConsumerQueue.h"
 #include "folly/Synchronized.h"
+#include "folly/concurrency/DynamicBoundedQueue.h"
+
 using namespace std::chrono_literals;
 using namespace std::string_view_literals;
 int main(int argc, char* argv[]) {
@@ -82,6 +84,25 @@ int main(int argc, char* argv[]) {
     // return r2;
   });
 
-  // r2.then([](auto& v) { fmt::println("reason {}", v); });
+  {
+    folly::DynamicBoundedQueue<int, true, true, true> queue(4);
+    queue.try_enqueue(20);
+    queue.try_enqueue(20);
+    queue.try_enqueue(20);
+    queue.try_enqueue(20);
+    boost::scoped_thread<> t1([&queue]() {
+      int x;
+      queue.dequeue(x);
+      std::this_thread::sleep_for(std::chrono::seconds(1));
+      fmt::println("dequeue {}", x);
+    });
+    boost::scoped_thread<> t2([&queue]() {
+      queue.enqueue(20);
+      fmt::println("enqueue");
+      queue.try_enqueue(20);
+      queue.try_enqueue(20);
+      queue.try_enqueue(20);
+    });
+  }
   return 0;
 }

@@ -7,6 +7,7 @@
 #include <range/v3/action/sort.hpp>
 #include <range/v3/algorithm/copy.hpp>
 #include <range/v3/algorithm/permutation.hpp>
+#include <range/v3/all.hpp>
 #include <range/v3/core.hpp>
 #include <range/v3/numeric/accumulate.hpp>
 #include <range/v3/view/all.hpp>
@@ -19,10 +20,14 @@
 #include <range/v3/view/join.hpp>
 #include <range/v3/view/map.hpp>
 #include <range/v3/view/slice.hpp>
+#include <range/v3/view/sliding.hpp>
 #include <range/v3/view/split.hpp>
+#include <range/v3/view/stride.hpp>
 #include <range/v3/view/take.hpp>
+#include <range/v3/view/take_last.hpp>
 #include <range/v3/view/transform.hpp>
 #include <range/v3/view/zip.hpp>
+// #include <range/v3/numeric/iota.hpp>
 #include <set>
 #include <sstream>
 #include <string>
@@ -198,28 +203,58 @@ int main(int argc, char* argv[]) {
     // ranges::diff(s1,s2);
   }
   {
+    std::string s{"hello"};
+
+    // output: h e l l o
+    ranges::for_each(s, [](char c) { std::cout << c << ' '; });
+  }
+  {
+    std::map<std::string, std::vector<std::string>> groupedStrings;
     std::vector<std::string> s1{"A-space1",   "A-park1",    "B-parkin2",
                                 "D-park3",    "A-parking4", "AF-parking4",
                                 "B-parking5", "D-parking88"};
     // std::sort(s1.begin(), s1.end());
     ranges::sort(s1);
-    auto gr = s1 | ranges::views::chunk_by([](auto&& x, auto&& y) {
+    ranges::for_each(s1, [&groupedStrings](auto& s) {
+      std::string prefix = ranges::views::split(s, '-') |
+                           ranges::views::take(1) | ranges::views::join |
+                           ranges::to<std::string>();
+      groupedStrings[prefix].emplace_back(s);
+    });
+    // std::cout << ranges::views::all(gr) << "\n";
+
+    for (const auto& p : groupedStrings) {
+      fmt::print("{} ==> ", p);
+    }
+  }
+  {
+    std::vector<std::string> ss{"A-space1",   "A-park1",    "B-parkin2",
+                                "D-park3",    "A-parking4", "AF-parking4",
+                                "B-parking5", "D-parking88"};
+    auto gr = ss | ranges::views::chunk_by([](auto&& x, auto&& y) {
                 auto f = x | ranges::views::split('-') |
                          ranges::views::take(1) | ranges::views::join;
-                //  | ranges::to<std::string>();
-
                 auto p = y | ranges::views::split('-') |
                          ranges::views::take(1) | ranges::views::join;
-                //  | ranges::to<std::string>();
-                std::cout << *p.begin() << "\n";
-                // return *ranges::begin(p) == *ranges::begin(f);
                 return *p.begin() == *f.begin();
               }) |
-              to<std::vector<std::vector<std::string>>>;
-    // std::cout << ranges::views::all(gr) << "\n";
+              ranges::to<std::vector<std::vector<std::string>>>;
     for (const auto& p : gr) {
       fmt::print("{} ==> ", p);
     }
+  }
+  {
+    std::cout << "\n";
+    std::string station{"ad-jjiiida"};
+    auto v2 = station | ranges::view::stride(2);
+    std::cout << ranges::views::all(v2) << "\n";
+    auto v3 = station | ranges::view::sliding(6);
+    std::cout << ranges::views::all(v3) << "\n";
+  }
+  {
+    auto numbers = ranges::views::ints(2, 7);
+
+    std::cout << numbers << '\n';
   }
 
   return 0;

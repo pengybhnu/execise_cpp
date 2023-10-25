@@ -44,7 +44,7 @@ target_link_libraries(sharedptr ${CONAN_LIBS})
 
 add_executable(rangev)
 target_sources(rangev PUBLIC ${CMAKE_SOURCE_DIR}/src/base/ranges.cpp)
-target_link_libraries(rangev ${CONAN_LIBS})
+target_link_libraries(rangev CONAN_PKG::range-v3 CONAN_PKG::fmt)
 
 add_executable(spant)
 target_sources(spant PUBLIC ${CMAKE_SOURCE_DIR}/src/base/spand.cpp   ${CMAKE_SOURCE_DIR}/src/base/point.pb.cc)
@@ -118,3 +118,8 @@ add_executable(mpunits)
 target_sources(mpunits PUBLIC ${CMAKE_SOURCE_DIR}/src/base/mpunits.cpp)
 target_compile_features(mpunits PRIVATE  cxx_std_20)
 target_link_libraries(mpunits CONAN_PKG::mp-units)
+
+add_executable(mdspandt)
+target_sources(mdspandt PUBLIC ${CMAKE_SOURCE_DIR}/src/base/mdspand.cpp)
+target_compile_features(mdspandt PRIVATE  cxx_std_20)
+target_link_libraries(mdspandt CONAN_PKG::mdspan)

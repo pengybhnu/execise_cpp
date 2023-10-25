@@ -4,7 +4,8 @@ project(libjoy)
 # SET(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CONAN_DISABLE_CHECK_COMPILER ON)
-set(PARGUMENTS_TARGETS ON)
+set(CONANTarget ON)
+
 
 # option(ENABLE_CONAN "Enable the Conan package manager for this project." OFF)
 # include(cmake/Conan.cmake)
