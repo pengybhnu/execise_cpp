@@ -1,3 +1,5 @@
+#include <folly/MPMCPipeline.h>
+
 #include <vector>
 
 #include "boost/thread/scoped_thread.hpp"
@@ -7,9 +9,17 @@
 #include "folly/ConcurrentSkipList.h"
 #include "folly/Expected.h"
 #include "folly/FBString.h"
+#include "folly/PackedSyncPtr.h"
 #include "folly/ProducerConsumerQueue.h"
 #include "folly/Synchronized.h"
+#include "folly/SynchronizedPtr.h"
 #include "folly/concurrency/DynamicBoundedQueue.h"
+#include "folly/executors/task_queue/PriorityLifoSemMPMCQueue.h"
+#include "folly/executors/task_queue/UnboundedBlockingQueue.h"
+#include "folly/portability/GTest.h"
+#include "folly/synchronization/Baton.h"
+#include "range/v3/view/all.hpp"
+#include "range/v3/view/iota.hpp"
 
 using namespace std::chrono_literals;
 using namespace std::string_view_literals;
@@ -104,5 +114,67 @@ int main(int argc, char* argv[]) {
       queue.try_enqueue(20);
     });
   }
+  {
+    folly::PriorityLifoSemMPMCQueue<int, folly::QueueBehaviorIfFull::THROW>
+        queue(3, 10);
+    queue.addWithPriority(1001, 0);
+    queue.addWithPriority(2, 0);
+    queue.addWithPriority(191, 1);
+    queue.addWithPriority(14, 1);
+    queue.addWithPriority(115, 2);
+    queue.addWithPriority(112, 2);
+    std::cout << "num " << queue.getNumPriorities() << "\n";
+    std::cout << "num " << queue.take() << " ";
+    std::cout << "num " << queue.take() << " ";
+    std::cout << "num " << queue.take() << " ";
+    // for (const auto& i :  ranges::views::iota(0, 10)) {
+
+    // }
+  }
+  {
+    folly::UnboundedBlockingQueue<int> q;
+    folly::Baton<> b1, b2;
+    std::thread t([&] {
+      // b1.post();
+      std::cout << "bnum " << q.take() << " ";
+      b2.post();
+    });
+    // b1.wait();
+    q.add(42);
+    b2.wait();
+    t.join();
+  }
+  {
+    folly::SynchronizedPtr<std::shared_ptr<int>> pInt{std::make_shared<int>(0)};
+    pInt.withWLock([](auto&& value) { value = 20.0; });
+    pInt.wlockPointer()->reset(new int(200));
+
+    pInt.withRLock([](auto&& value) { fmt::println("\n---- p {}", value); });
+
+    folly::PackedSyncPtr<int> packint;
+    packint.init(new int(20));
+    packint.lock();
+    packint.get();
+  }
+
+  {
+    folly::MPMCPipeline<int> pline(20);
+
+    boost::scoped_thread<> read([&pline]() {
+      int x;
+      pline.blockingRead(x);
+      fmt::println("read1 {}", x);
+      pline.blockingRead(x);
+      fmt::println("read2 {}", x);
+    });
+
+    boost::scoped_thread<> write([&pline]() {
+      int x;
+      pline.blockingWrite(200);
+      pline.blockingWrite(202);
+      pline.blockingWrite(369);
+    });
+  }
+
   return 0;
 }

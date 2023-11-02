@@ -86,8 +86,11 @@ int main() {
     doc.Accept(writer);
     std::cout << "doc:" << buffer.GetString() << std::endl;
   };
-
-  std::cout << "toml: " << v_to_toml << std::endl;
+  v_to_json.dump();
+  auto sertom = toml::format(v_to_toml,0,std::numeric_limits<double>::max_digits10,true,true);
+  
+  std::cout << "toml: " << sertom .size() << " "<< v_to_toml << std::endl;
+  std::cout << "toml: " << sertom << std::endl;
   fmt::print("json: {}\n", v_to_json.dump());
   std::cout << "yaml: " << v_to_yaml << std::endl;
   print(v_to_rjson);

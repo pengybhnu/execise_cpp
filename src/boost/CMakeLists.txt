@@ -49,3 +49,9 @@ target_sources(tokens PUBLIC ${CMAKE_SOURCE_DIR}/src/boost/tokensizer.cpp)
 target_link_libraries(tokens CONAN_PKG::boost
 CONAN_PKG::fmt
 )
+
+add_executable(outcome)
+target_sources(outcome PUBLIC ${CMAKE_SOURCE_DIR}/src/boost/outcome.cpp)
+target_link_libraries(outcome CONAN_PKG::boost
+CONAN_PKG::fmt
+)

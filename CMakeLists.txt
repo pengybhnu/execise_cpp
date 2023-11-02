@@ -12,7 +12,7 @@ set(CONANTarget ON)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 
 conan_basic_setup()
-include(cmake/CPM.cmake)
+# include(cmake/CPM.cmake)
 # add_executable(taskflowtest)
 # target_sources(taskflowtest PUBLIC src/taskflowtest.cpp)
 # target_compile_options(taskflowtest PRIVATE "-std=c++20")
@@ -47,5 +47,8 @@ add_executable(breakt)
 target_sources(breakt PUBLIC src/breakpadt.cpp)
 target_compile_options(breakt PUBLIC "-g")
 target_link_libraries(breakt ${CONAN_LIBS})
+
+# find_library(stdexec REQUIRED  NAMES stdexec PATHS /usr/local/lib/cmake)
+# /usr/local/lib/cmake/stdexec
 
 add_subdirectory(src)

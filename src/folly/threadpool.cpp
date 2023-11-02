@@ -3,8 +3,10 @@
 
 #include <iostream>
 
-int main() {
-  // Create a CPU thread pool with 4 threads
+#include "gflags/gflags.h"
+
+int main(int argc, char* argv[]) {
+  gflags::ParseCommandLineFlags(&argc, &argv, true);
   std::cout << "main " << std::this_thread::get_id() << std::endl;
 
   folly::CPUThreadPoolExecutor threadPool(3);   // max threads
@@ -79,16 +81,57 @@ int main() {
       })
       .thenTry([](folly::Try<std::string> strTry) {
         std::cout << "try " << strTry.value() << std::endl;
-        try {
-          int* a = nullptr;
-          *a = 200;
-        } catch (std::exception const& e) {
-        }
+        // try {
+        //   int* a = nullptr;
+        //   *a = 200;
+        // } catch (std::exception const& e) {
+        // }
       })
       .thenError(folly::tag_t<std::exception>{}, [](std::exception const& e) {
         std::cerr << "get " << e.what() << std::endl;
       });
   std::this_thread::sleep_for(std::chrono::seconds(10));
 
+  if (true) {
+    using namespace folly;
+    using namespace std::chrono_literals;
+    bool tookLopri = false;
+    auto completed = 0;
+    auto hipri = [&] {
+      // EXPECT_FALSE(tookLopri);
+      std::cout << "hi \n";
+      std::this_thread::sleep_for(10ms);
+      completed++;
+    };
+    auto lopri = [&] {
+      tookLopri = true;
+      std::cout << "lo \n";
+
+      completed++;
+    };
+    auto midpri = [&] { std::cout << "mid \n"; };
+    auto pool = std::make_shared<CPUThreadPoolExecutor>(0 /*numThreads*/,
+                                                        3 /*numPriorities*/);
+    {
+      auto loPriExecutor = ExecutorWithPriority::create(
+          getKeepAliveToken(pool.get()), Executor::LO_PRI);
+      auto hiPriExecutor = ExecutorWithPriority::create(
+          getKeepAliveToken(pool.get()), Executor::HI_PRI);
+      auto midPriExecutor = ExecutorWithPriority::create(
+          getKeepAliveToken(pool.get()), Executor::MID_PRI);
+
+      for (int i = 0; i < 5; i++) {
+        loPriExecutor->add(lopri);
+      }
+      for (int i = 0; i < 2; i++) {
+        hiPriExecutor->add(hipri);
+      }
+      for (int i = 0; i < 2; i++) {
+        midPriExecutor->add(midpri);
+      }
+      pool->setNumThreads(1);
+    }
+    pool->join();
+  }
   return 0;
 }
