@@ -27,3 +27,18 @@ add_executable(fiberapp)
 target_sources(fiberapp PUBLIC ${CMAKE_SOURCE_DIR}/src/folly/fiberapp.cpp)
 target_compile_features(fiberapp PRIVATE cxx_std_20)
 target_link_libraries(fiberapp CONAN_PKG::folly )
+
+add_executable(excutep)
+target_sources(excutep PUBLIC ${CMAKE_SOURCE_DIR}/src/folly/excutep.cpp)
+target_compile_features(excutep PRIVATE cxx_std_20)
+target_link_libraries(excutep CONAN_PKG::folly )
+
+
+add_executable(globalp)
+target_sources(globalp PUBLIC ${CMAKE_SOURCE_DIR}/src/folly/globalp.cpp)
+target_link_libraries(globalp CONAN_PKG::folly)
+
+
+add_executable(collection)
+target_sources(collection PUBLIC ${CMAKE_SOURCE_DIR}/src/folly/collection.cpp)
+target_link_libraries(collection CONAN_PKG::folly)

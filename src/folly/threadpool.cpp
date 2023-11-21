@@ -74,22 +74,26 @@ int main(int argc, char* argv[]) {
                   << std::endl;
         return std::string{"getv"};
       })
-      .thenValue([](std::string result) {
+      .thenValue([](auto&& result) {
         std::cout << "Task 3 result then2: " << std::this_thread::get_id()
                   << " " << result << std::endl;
         return std::string{"getv2"};
       })
       .thenTry([](folly::Try<std::string> strTry) {
-        std::cout << "try " << strTry.value() << std::endl;
+        std::cout << "tryvaule " << std::this_thread::get_id() << " "
+                  << strTry.value() << std::endl;
+        // std::cout << strTry.exception().what() << std::endl;
         // try {
         //   int* a = nullptr;
         //   *a = 200;
         // } catch (std::exception const& e) {
         // }
+        throw std::runtime_error("test");
       })
       .thenError(folly::tag_t<std::exception>{}, [](std::exception const& e) {
-        std::cerr << "get " << e.what() << std::endl;
+        std::cerr << "thenError " << e.what() << std::endl;
       });
+
   std::this_thread::sleep_for(std::chrono::seconds(10));
 
   if (true) {
@@ -132,6 +136,19 @@ int main(int argc, char* argv[]) {
       pool->setNumThreads(1);
     }
     pool->join();
+  }
+  {
+    folly::Promise<int> mint;
+    auto res = mint.getFuture();
+    std::cout << "Promise " << std::endl;
+    std::cout << "Promise " << std::endl;
+
+    res.via(&threadPool).thenValue([](int x) -> int* {
+      std::cout << "getFuture " << x << std::endl;
+      return nullptr;
+    });
+    std::cout << "Promise " << std::endl;
+    mint.setValue(10);
   }
   return 0;
 }

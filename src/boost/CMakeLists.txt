@@ -52,6 +52,16 @@ CONAN_PKG::fmt
 
 add_executable(outcome)
 target_sources(outcome PUBLIC ${CMAKE_SOURCE_DIR}/src/boost/outcome.cpp)
-target_link_libraries(outcome CONAN_PKG::boost
-CONAN_PKG::fmt
+target_link_libraries(outcome 
+    CONAN_PKG::boost
+    CONAN_PKG::fmt
 )
+
+add_executable(lineinter)
+target_sources(lineinter PUBLIC  ${CMAKE_SOURCE_DIR}/src/boost/lineinter.cpp)
+target_link_libraries(lineinter CONAN_PKG::boost)
+
+
+add_executable(futureb)
+target_sources(futureb PUBLIC ${CMAKE_SOURCE_DIR}/src/boost/futureb.cpp)
+target_link_libraries(futureb CONAN_PKG::boost)

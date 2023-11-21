@@ -186,12 +186,12 @@ int main(int argc, char* argv[]) {
   }
   {
     std::cout << "-------------split" << std::endl;
-    std::string v = "/devices/tr1555/hdmap/mapinfo";
+    std::string v = "devices/tr1555/hdmap/mapinfo";
     auto view = v | ranges::views::split('/') |
                 ranges::views::filter([](auto&& x) { return !x.empty(); }) |
                 ranges::to<std::vector<std::string>>;
     auto view2 =
-        v | ranges::views::split('/') | ranges::to<std::vector<std::string>>;
+        v | ranges::views::split('/') | ranges::views::take(1) | ranges::views::join("")| ranges::to<std::string>;
     std::cout << ranges::views::all(view) << "\n";
     std::cout << ranges::views::all(view2) << "\n";
   }
@@ -245,9 +245,9 @@ int main(int argc, char* argv[]) {
   {
     std::cout << "\n";
     std::string station{"ad-jjiiida"};
-    auto v2 = station | ranges::view::stride(2);
+    auto v2 = station | ranges::views::stride(2);
     std::cout << ranges::views::all(v2) << "\n";
-    auto v3 = station | ranges::view::sliding(6);
+    auto v3 = station | ranges::views::sliding(6);
     std::cout << ranges::views::all(v3) << "\n";
   }
   {

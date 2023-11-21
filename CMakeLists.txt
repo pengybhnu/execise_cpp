@@ -10,8 +10,8 @@ set(CONANTarget ON)
 # option(ENABLE_CONAN "Enable the Conan package manager for this project." OFF)
 # include(cmake/Conan.cmake)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-
-conan_basic_setup()
+conan_basic_setup(TARGETS)
+# conan_basic_setup()
 # include(cmake/CPM.cmake)
 # add_executable(taskflowtest)
 # target_sources(taskflowtest PUBLIC src/taskflowtest.cpp)
@@ -50,5 +50,13 @@ target_link_libraries(breakt ${CONAN_LIBS})
 
 # find_library(stdexec REQUIRED  NAMES stdexec PATHS /usr/local/lib/cmake)
 # /usr/local/lib/cmake/stdexec
+
+include(cmake/CPM.cmake)
+CPMAddPackage("gh:COVESA/vsomeip#3.3.0")
+CPMAddPackage("gh:apache/brpc#1.7.0")
+# https://github.com/apache/brpc
+find_package(vsomeip)
+message(${vsomeip_SOURCE_DIR})
+
 
 add_subdirectory(src)
