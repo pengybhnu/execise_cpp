@@ -6,7 +6,7 @@ add_executable(eraset)
 target_sources(eraset PUBLIC ${CMAKE_SOURCE_DIR}/src/container/eraset.cpp)
 target_include_directories(eraset PUBLIC ${CMAKE_SOURCE_DIR}/include)
 target_compile_options(eraset PRIVATE "-std=c++20")
-target_link_libraries(eraset ${CONAN_LIBS})
+target_link_libraries(eraset CONAN_PKG::boost)
 
 # find_library(vsomeip)
 find_package(vsomeip)

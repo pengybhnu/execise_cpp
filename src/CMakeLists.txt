@@ -13,6 +13,7 @@ add_subdirectory(simpleasync)
 add_subdirectory(container)
 add_subdirectory(ceres)
 add_subdirectory(stdexe)
+add_subdirectory(brpct)
 
 
 

@@ -12,3 +12,9 @@ target_sources(justs PUBLIC ${CMAKE_SOURCE_DIR}/src/stdexe/justs.cpp)
 target_compile_features(justs PRIVATE cxx_std_20)
 
 target_link_libraries(justs )
+
+
+add_executable(coroute)
+target_sources(coroute PUBLIC ${CMAKE_SOURCE_DIR}/src/stdexe/coroutec.cpp)
+target_compile_features(coroute PRIVATE cxx_std_20)
+target_link_libraries(coroute CONAN_PKG::fmt)

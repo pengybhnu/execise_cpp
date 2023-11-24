@@ -12,7 +12,7 @@ openssl/1.1.1q
 taskflow/3.6.0
 snappy/1.1.9
 tl-expected/1.1.0
-# libunifex/cci.20220430
+libunifex/cci.20220430
 range-v3/0.12.0
 # cgal/5.6
 flatbuffers/23.5.26
@@ -25,10 +25,9 @@ libcoro/0.8
 # sqlite3/3.43.0
 # concurrencpp/0.1.7
 catch2/3.4.0
-# poco/1.12.4
+poco/1.12.4
 zstd/1.5.5
 lz4/1.9.4
-async_simple/1.2.0
 asio/1.28.0
 breakpad/cci.20210521
 # readline/8.1.2
@@ -50,6 +49,10 @@ xz_utils/5.4.4
 mdspan/0.6.0
 re2/20230901
 zstd/1.5.5
+onetbb/2021.10.0
+leveldb/1.23
+gtest/1.14.0
+sqlite3/3.43.0
 [generators]
 # CMakeDeps
 # CMakeToolchain

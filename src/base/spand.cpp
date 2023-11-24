@@ -1,6 +1,7 @@
 #include <iostream>
 #include <list>
 #include <span>
+#include <thread>
 #include <vector>
 
 #include "base/point.pb.h"
@@ -75,4 +76,7 @@ int main(int argc, char *argv[]) {
 
   std::vector<int> a = {23, 89};
   std::vector<int> vp{23, 26};
+  std::jthread([&geo]() {
+    fmt::println("lines agian {}", geo.lines());
+  });
 }

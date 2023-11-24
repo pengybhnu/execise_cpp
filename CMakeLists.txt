@@ -4,7 +4,6 @@ project(libjoy)
 # SET(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CONAN_DISABLE_CHECK_COMPILER ON)
-set(CONANTarget ON)
 
 
 # option(ENABLE_CONAN "Enable the Conan package manager for this project." OFF)
@@ -46,7 +45,7 @@ message(STATUS "${SOURCE_FILES}")
 add_executable(breakt)
 target_sources(breakt PUBLIC src/breakpadt.cpp)
 target_compile_options(breakt PUBLIC "-g")
-target_link_libraries(breakt ${CONAN_LIBS})
+target_link_libraries(breakt CONAN_PKG::breakpad)
 
 # find_library(stdexec REQUIRED  NAMES stdexec PATHS /usr/local/lib/cmake)
 # /usr/local/lib/cmake/stdexec
@@ -54,9 +53,10 @@ target_link_libraries(breakt ${CONAN_LIBS})
 include(cmake/CPM.cmake)
 CPMAddPackage("gh:COVESA/vsomeip#3.3.0")
 CPMAddPackage("gh:apache/brpc#1.7.0")
+CPMAddPackage("gh:alibaba/async_simple#1.2")
 # https://github.com/apache/brpc
 find_package(vsomeip)
 message(${vsomeip_SOURCE_DIR})
-
+message(${brpc_SOURCE_DIR})
 
 add_subdirectory(src)

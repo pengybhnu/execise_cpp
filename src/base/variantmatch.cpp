@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
   std::optional<int> optt = std::nullopt;
   tl::expected<int, str> exp{20};
   tl::expected<int, str> exp2 = tl::make_unexpected("error");
-  
+
   // exp.has_value()
   exp.transform([](const auto& x) {
        fmt::println("expected transform {}", x);
@@ -132,4 +132,48 @@ int main(int argc, char* argv[]) {
       pattern(some(_)) = [] { std::cout << "std::unique\n"; },
       pattern(none) = [] { std::cout << "nullptr\n"; });
   // prints: "none"
+  {
+    fmt::println("-----------------------------------");
+    auto start = tl::expected<std::string, int>(tl::unexpect, 1);
+    // auto start = tl::expected<std::string, int>("jok");
+    auto finals = start.or_else([](auto& x) -> tl::expected<std::string, int> {
+      fmt::println("error {}", x);
+      if (x == 2)
+        return std::string("ok");
+      else {
+        return tl::expected<std::string, int>(tl::unexpect, 2);
+      }
+    });
+    // .map([](const auto& y)-> tl::expected<std::string, int> {
+    //   fmt::println("ok {}", y);
+    //   return y;
+    // });
+    if (finals) {
+      fmt::println("has ok {}", finals.value());
+    } else {
+      fmt::println("has error ", finals.error());
+    }
+  }
+  {
+    fmt::println("-----------------------------------");
+    // auto start = tl::expected<std::string, int>(tl::unexpect, 2);
+    auto start = tl::expected<std::string, int>("jok");
+    auto finals = start.or_else([](auto& x) -> tl::expected<std::string, int> {
+      fmt::println("error {}", x);
+      if (x == 2)
+        return std::string("ok");
+      else {
+        return tl::expected<std::string, int>(tl::unexpect, 2);
+      }
+    });
+    // .map([](const auto& y)-> tl::expected<std::string, int> {
+    //   fmt::println("ok {}", y);
+    //   return y;
+    // });
+    if (finals) {
+      fmt::println("has ok {}", finals.value());
+    } else {
+      fmt::println("has error ", finals.error());
+    }
+  }
 }

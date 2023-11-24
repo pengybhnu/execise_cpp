@@ -1,6 +1,6 @@
 
 cmake_minimum_required(VERSION 3.22)
-project(libcoro_test)
+project(folly_test)
 
 
 

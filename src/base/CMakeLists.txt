@@ -23,7 +23,7 @@ set_target_properties(stacktraceb PROPERTIES ENABLE_EXPORTS ON)
 # target_compile_options(stacktraceb PUBLIC "-fPIE" "-rdynamic" "-no-pie" "-fno-pie")
 # target_compile_options()
 # target_link_libraries(stacktraceb)
-target_link_libraries(stacktraceb PUBLIC ${CONAN_LIBS_BOOST} pthread dl)
+target_link_libraries(stacktraceb PUBLIC CONAN_PKG::boost pthread dl)
 
 
 # add_executable(cppco)
@@ -39,7 +39,7 @@ target_link_libraries(stacktraceb PUBLIC ${CONAN_LIBS_BOOST} pthread dl)
 
 add_executable(sharedptr)
 target_sources(sharedptr PUBLIC ${CMAKE_SOURCE_DIR}/src/base/shared.cpp)
-target_link_libraries(sharedptr ${CONAN_LIBS})
+target_link_libraries(sharedptr CONAN_PKG::fmt)
 
 
 add_executable(rangev)
@@ -50,7 +50,12 @@ add_executable(spant)
 target_sources(spant PUBLIC ${CMAKE_SOURCE_DIR}/src/base/spand.cpp   ${CMAKE_SOURCE_DIR}/src/base/point.pb.cc)
 target_include_directories(spant PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_compile_features(spant PRIVATE  cxx_std_20)
-target_link_libraries(spant ${CONAN_LIBS})
+target_link_libraries(spant
+ CONAN_PKG::fmt
+ CONAN_PKG::protobuf
+ CONAN_PKG::span-lite
+ CONAN_PKG::tcb-span
+ )
 
 add_executable(cerealt)
 target_sources(cerealt PUBLIC ${CMAKE_SOURCE_DIR}/src/base/cerealt.cpp)
@@ -123,3 +128,8 @@ add_executable(mdspandt)
 target_sources(mdspandt PUBLIC ${CMAKE_SOURCE_DIR}/src/base/mdspand.cpp)
 target_compile_features(mdspandt PRIVATE  cxx_std_20)
 target_link_libraries(mdspandt CONAN_PKG::mdspan)
+
+add_executable(coroutineb)
+target_sources(coroutineb PUBLIC ${CMAKE_SOURCE_DIR}/src/base/coroutineb.cpp)
+target_compile_features(coroutineb PRIVATE  cxx_std_20)
+target_link_libraries(coroutineb )
