@@ -42,3 +42,16 @@ target_link_libraries(globalp CONAN_PKG::folly)
 add_executable(collection)
 target_sources(collection PUBLIC ${CMAKE_SOURCE_DIR}/src/folly/collection.cpp)
 target_link_libraries(collection CONAN_PKG::folly)
+
+
+add_executable(taskcore)
+target_sources(taskcore PUBLIC ${CMAKE_SOURCE_DIR}/src/folly/taskcoro.cpp)
+target_compile_features(taskcore PRIVATE cxx_std_20)
+target_link_libraries(taskcore CONAN_PKG::folly)
+
+add_executable(batonp)
+target_sources(batonp PUBLIC ${CMAKE_SOURCE_DIR}/src/folly/batonp.cpp)
+target_compile_features(batonp PRIVATE cxx_std_20)
+target_link_libraries(batonp CONAN_PKG::folly)
+
+

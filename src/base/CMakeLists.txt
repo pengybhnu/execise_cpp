@@ -129,7 +129,3 @@ target_sources(mdspandt PUBLIC ${CMAKE_SOURCE_DIR}/src/base/mdspand.cpp)
 target_compile_features(mdspandt PRIVATE  cxx_std_20)
 target_link_libraries(mdspandt CONAN_PKG::mdspan)
 
-add_executable(coroutineb)
-target_sources(coroutineb PUBLIC ${CMAKE_SOURCE_DIR}/src/base/coroutineb.cpp)
-target_compile_features(coroutineb PRIVATE  cxx_std_20)
-target_link_libraries(coroutineb )

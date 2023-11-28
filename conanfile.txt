@@ -53,6 +53,7 @@ onetbb/2021.10.0
 leveldb/1.23
 gtest/1.14.0
 sqlite3/3.43.0
+async_simple/1.2.0
 [generators]
 # CMakeDeps
 # CMakeToolchain

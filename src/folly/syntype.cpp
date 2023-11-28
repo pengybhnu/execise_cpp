@@ -49,7 +49,7 @@ int main(int argc, char* argv[]) {
     syn_name.withRLock(
         [](const auto& name) { fmt::println("r2 name {}", name); });
   });
-  boost::scoped_thread<> read3([&]() {
+  std::jthread read3([&]() {
     syn_vec.withWLock([](auto& vec) {
       vec.reserve(10);
       vec.emplace_back(1);
@@ -59,7 +59,7 @@ int main(int argc, char* argv[]) {
   });
   std::this_thread::sleep_for(2s);
 
-  boost::scoped_thread<> writevec([&]() {
+  std::jthread writevec([&]() {
     syn_vec.withRLock([](const auto& vec) { fmt::println("vec {}", vec); });
   });
 

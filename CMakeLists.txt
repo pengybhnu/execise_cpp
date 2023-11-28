@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.27)
 project(libjoy)
-# SET(CMAKE_CXX_STANDARD 20)
-# SET(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CONAN_DISABLE_CHECK_COMPILER ON)
 
@@ -53,7 +52,7 @@ target_link_libraries(breakt CONAN_PKG::breakpad)
 include(cmake/CPM.cmake)
 CPMAddPackage("gh:COVESA/vsomeip#3.3.0")
 CPMAddPackage("gh:apache/brpc#1.7.0")
-CPMAddPackage("gh:alibaba/async_simple#1.2")
+# CPMAddPackage("gh:alibaba/async_simple#1.2")
 # https://github.com/apache/brpc
 find_package(vsomeip)
 message(${vsomeip_SOURCE_DIR})

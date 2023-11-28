@@ -7,10 +7,11 @@
 #include "folly/Function.h"
 #include "folly/Optional.h"
 #include "folly/ProducerConsumerQueue.h"
+#include "folly/ScopeGuard.h"
 #include "folly/Synchronized.h"
 #include "folly/UTF8String.h"
+#include "folly/dynamic.h"
 #include "folly/small_vector.h"
-
 int main(int argc, char* argv[]) {
   {
     folly::Synchronized<std::string, std::shared_mutex> syn_name;
@@ -25,16 +26,20 @@ int main(int argc, char* argv[]) {
     {
       auto write = syn_name.wlock();
       write->append(" cidi complete");
-      fmt::println("len {0} {1}", write->size(), *write);
+    }
+    {
+      auto read = syn_name.rlock();
+      fmt::println("len {0} {1}", read->size(), *read);
     }
   }
 
   {
-    folly::FixedString<26> name{"read name"};
+    folly::FixedString<60> name{"read name"};
     name.append(" cidi complete");
     name = "best station";
     // name.append(" cidi complete");
-    fmt::println("len {0} {1}", name.size(), name.toStdString());
+    fmt::println("FixedString {0} {1} {2}", name.length(), name.size(),
+                 name.toStdString());
   }
   {
     folly::fbvector<int> fbint{90, 100, 256, 300};
@@ -67,14 +72,38 @@ int main(int argc, char* argv[]) {
   }
   {
     folly::Optional<int> p = 20;
-    folly::Function<int(int)> f = [p](int i) { 
+    folly::Function<int(int)> f = [p](int i) {
       if (p.hasValue()) {
         return p.value() * i;
       }
-      return i * i; };
+      return i * i;
+    };
     folly::Function<int(int)> f2 = std::move(f);
-    // std::function<int(int)> stdf = std::move(f); 
+    // std::function<int(int)> stdf = f2;
     fmt::println("func {}", f2(2));
+  }
+  {
+    folly::dynamic varf;
+    varf = 12;
+    fmt::println("var {}", varf.typeName());
+    varf = std::string("nm");
+    fmt::println("var {}", varf.typeName());
+    varf = folly::fbstring{"d"};
+    fmt::println("var {}", varf.typeName());
+
+    // switch (varf.type()) {
+
+    // }
+  }
+  {
+    int init = 0;
+    {
+      auto gd = folly::makeGuard([&]() { init += 1; });
+      fmt::println("inter {}", init);
+      // gd.dismiss();
+      gd.rehire();
+    }
+    fmt::println("out {}", init);
   }
   return 0;
 }
