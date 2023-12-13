@@ -1,10 +1,10 @@
 #include <folly/Singleton.h>
 #include <folly/executors/CPUThreadPoolExecutor.h>
 #include <folly/futures/Future.h>
-#include "folly/futures/ThreadWheelTimekeeper.h"
 
 #include <iostream>
 
+#include "folly/futures/ThreadWheelTimekeeper.h"
 #include "gflags/gflags.h"
 folly::CPUThreadPoolExecutor threadPool(3);  // max threads
 
@@ -74,7 +74,7 @@ void futurethen() {
     std::this_thread::sleep_for(std::chrono::seconds(4));
     return nullptr;
   });
-  auto f5_7 = folly::collect(future5,future7);
+  auto f5_7 = folly::collect(future5, future7);
 
   // Use the futures to retrieve the results
   std::move(future1).thenValue([](int result) {
@@ -114,15 +114,13 @@ void futurethen() {
   std::this_thread::sleep_for(std::chrono::seconds(10));
 }
 void futuremap() {
-
   auto f1 = folly::makeFuture(2);
-  std::move(f1).filter([](auto& x){
+  std::move(f1).filter([](auto& x) {
     std::cout << "filter" << std::endl;
     return x;
   });
 }
 void futureontime() {
-  
   std::vector<folly::Future<int>> futures1;
   futures1.emplace_back(folly::makeFuture(3));
   futures1.emplace_back(folly::makeFuture(3));
@@ -131,19 +129,20 @@ void futureontime() {
   //   std::cout << "reduce"<< std::endl;
   //   // return {};
   // });
-   folly::Future<int> f3 = folly::via(&threadPool, []()  {
+  folly::Future<int> f3 = folly::via(&threadPool, []() {
     std::cout << "Task 1 executed in CPU thread pool" << std::endl;
     std::this_thread::sleep_for(std::chrono::seconds(1));
 
     return 4;
   });
-  std::move(f3).delayed(std::chrono::seconds(2)).onTimeout(std::chrono::seconds(2), []() {
-    std::cout << "time out" << std::endl;
-    return -1;
-  });
-  folly::futures::sleep(std::chrono::milliseconds(1000)).defer([](auto x){
+  std::move(f3)
+      .delayed(std::chrono::seconds(2))
+      .onTimeout(std::chrono::seconds(2), []() {
+        std::cout << "time out" << std::endl;
+        return -1;
+      });
+  folly::futures::sleep(std::chrono::milliseconds(1000)).defer([](auto x) {
     std::cout << "defer" << std::endl;
-
   });
 }
 void proity() {
@@ -187,14 +186,41 @@ void proity() {
   }
   pool->join();
 }
+
+void threadp() {
+  auto h = std::make_unique<folly::CPUThreadPoolExecutor>(2, 3);
+  h->add([]() {
+    std::cout << "l1 \n";
+    std::this_thread::sleep_for(std::chrono::seconds(3));
+  });
+  h->add([]() {
+    std::cout << "l2 \n";
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+  });
+  h->join();
+  h.reset(nullptr);
+  if (!h) {
+    h = std::make_unique<folly::CPUThreadPoolExecutor>(3, 3);
+  }
+  h->add([]() {
+    std::cout << "nl1 \n";
+    // std::this_thread::sleep_for(std::chrono::seconds(3));
+  });
+  h->add([]() {
+    std::cout << "nl2 \n";
+    // std::this_thread::sleep_for(std::chrono::seconds(1));
+  });
+  h->join();
+}
 int main(int argc, char* argv[]) {
-  gflags::ParseCommandLineFlags(&argc, &argv, true);
-  std::cout << "main " << std::this_thread::get_id() << std::endl;
-  folly::SingletonVault::singleton()->registrationComplete();
-  futurethen();
-  proity();
-  futureontime();
-  futuremap();
-  threadPool.join();
+  // gflags::ParseCommandLineFlags(&argc, &argv, true);
+  // std::cout << "main " << std::this_thread::get_id() << std::endl;
+  // folly::SingletonVault::singleton()->registrationComplete();
+  // futurethen();
+  // proity();
+  // futureontime();
+  // futuremap();
+  // threadPool.join();
+  threadp();
   return 0;
 }

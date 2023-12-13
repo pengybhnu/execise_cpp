@@ -15,7 +15,7 @@ add_executable(threadpool)
 target_sources(threadpool PUBLIC ${CMAKE_SOURCE_DIR}/src/folly/threadpool.cpp)
 target_compile_features(threadpool PRIVATE cxx_std_17)
 # set_target_properties()
-target_link_options(threadpool PRIVATE "-s")
+# target_link_options(threadpool PRIVATE "-s")
 set_target_properties(threadpool PROPERTIES DEBUG_POSTFIX "-d" )
 target_link_libraries(threadpool CONAN_PKG::folly)
 

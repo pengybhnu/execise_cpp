@@ -71,8 +71,6 @@ int main() {
 
     // Get a handle to the thread pool:
     auto other_sched = other_pool.get_scheduler();
-    // auto tbb_sched = other_pool.get_scheduler();
-
     // Get a handle to the thread pool:
     auto tbb_sched = pool.get_scheduler();
 
@@ -80,7 +78,7 @@ int main() {
 
     using namespace stdexec;
 
-    // clang-format off
+    
     auto work = when_all(
         on(tbb_sched, just(1))    | then(compute) | then(compute),
         on(other_sched, just(0))  | then(compute) | transfer(tbb_sched)   | then(compute),

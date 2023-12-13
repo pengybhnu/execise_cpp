@@ -13,6 +13,7 @@ SemiFuture<std::vector<int>> multiFooFuture(std::vector<int> inputs) {
   }
   return collect(futures);
 }
+
 int main(int argc, char* argv[]) {
   std::vector<int> input{1, 2, 3};
   multiFooFuture(input).wait();

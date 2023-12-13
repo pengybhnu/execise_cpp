@@ -43,10 +43,54 @@ struct HttpResponseDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HttpResponseDefaultTypeInternal _HttpResponse_default_instance_;
+PROTOBUF_CONSTEXPR Info::Info(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.name_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.num_)*/0u
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct InfoDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR InfoDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~InfoDefaultTypeInternal() {}
+  union {
+    Info _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 InfoDefaultTypeInternal _Info_default_instance_;
+PROTOBUF_CONSTEXPR Point::Point(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.z_)*/nullptr
+  , /*decltype(_impl_.m_)*/0
+  , /*decltype(_impl_.y_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct PointDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR PointDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~PointDefaultTypeInternal() {}
+  union {
+    Point _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 PointDefaultTypeInternal _Point_default_instance_;
+PROTOBUF_CONSTEXPR Get::Get(
+    ::_pbi::ConstantInitialized): _impl_{
+    /*decltype(_impl_.z_)*/nullptr
+  , /*decltype(_impl_.x_)*/0
+  , /*decltype(_impl_.y_)*/0
+  , /*decltype(_impl_._cached_size_)*/{}} {}
+struct GetDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetDefaultTypeInternal()
+      : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetDefaultTypeInternal() {}
+  union {
+    Get _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetDefaultTypeInternal _Get_default_instance_;
 }  // namespace example
-static ::_pb::Metadata file_level_metadata_http_2eproto[2];
+static ::_pb::Metadata file_level_metadata_http_2eproto[5];
 static constexpr ::_pb::EnumDescriptor const** file_level_enum_descriptors_http_2eproto = nullptr;
-static const ::_pb::ServiceDescriptor* file_level_service_descriptors_http_2eproto[4];
+static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_http_2eproto = nullptr;
 
 const uint32_t TableStruct_http_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   ~0u,  // no _has_bits_
@@ -61,37 +105,73 @@ const uint32_t TableStruct_http_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pro
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::example::Info, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::example::Info, _impl_.name_),
+  PROTOBUF_FIELD_OFFSET(::example::Info, _impl_.num_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::example::Point, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::example::Point, _impl_.m_),
+  PROTOBUF_FIELD_OFFSET(::example::Point, _impl_.y_),
+  PROTOBUF_FIELD_OFFSET(::example::Point, _impl_.z_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::example::Get, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _inlined_string_donated_
+  PROTOBUF_FIELD_OFFSET(::example::Get, _impl_.x_),
+  PROTOBUF_FIELD_OFFSET(::example::Get, _impl_.y_),
+  PROTOBUF_FIELD_OFFSET(::example::Get, _impl_.z_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::example::HttpRequest)},
   { 6, -1, -1, sizeof(::example::HttpResponse)},
+  { 12, -1, -1, sizeof(::example::Info)},
+  { 20, -1, -1, sizeof(::example::Point)},
+  { 29, -1, -1, sizeof(::example::Get)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
   &::example::_HttpRequest_default_instance_._instance,
   &::example::_HttpResponse_default_instance_._instance,
+  &::example::_Info_default_instance_._instance,
+  &::example::_Point_default_instance_._instance,
+  &::example::_Get_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_http_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\nhttp.proto\022\007example\"\r\n\013HttpRequest\"\016\n\014"
-  "HttpResponse2\177\n\013HttpService\0223\n\004Echo\022\024.ex"
-  "ample.HttpRequest\032\025.example.HttpResponse"
-  "\022;\n\014EchoProtobuf\022\024.example.HttpRequest\032\025"
-  ".example.HttpResponse2L\n\013FileService\022=\n\016"
-  "default_method\022\024.example.HttpRequest\032\025.e"
-  "xample.HttpResponse2\262\001\n\014QueueService\0224\n\005"
-  "start\022\024.example.HttpRequest\032\025.example.Ht"
-  "tpResponse\0223\n\004stop\022\024.example.HttpRequest"
-  "\032\025.example.HttpResponse\0227\n\010getstats\022\024.ex"
-  "ample.HttpRequest\032\025.example.HttpResponse"
-  "2G\n\016HttpSSEService\0225\n\006stream\022\024.example.H"
-  "ttpRequest\032\025.example.HttpResponseB\003\200\001\001"
+  "HttpResponse\"!\n\004Info\022\014\n\004name\030\001 \001(\t\022\013\n\003nu"
+  "m\030\002 \001(\r\"7\n\005Point\022\t\n\001m\030\001 \001(\001\022\t\n\001y\030\002 \001(\001\022\030"
+  "\n\001z\030\003 \001(\0132\r.example.Info\"5\n\003Get\022\t\n\001x\030\001 \001"
+  "(\001\022\t\n\001y\030\002 \001(\001\022\030\n\001z\030\003 \001(\0132\r.example.Info2"
+  "\177\n\013HttpService\0223\n\004Echo\022\024.example.HttpReq"
+  "uest\032\025.example.HttpResponse\022;\n\014EchoProto"
+  "buf\022\024.example.HttpRequest\032\025.example.Http"
+  "Response2L\n\013FileService\022=\n\016default_metho"
+  "d\022\024.example.HttpRequest\032\025.example.HttpRe"
+  "sponse2\262\001\n\014QueueService\0224\n\005start\022\024.examp"
+  "le.HttpRequest\032\025.example.HttpResponse\0223\n"
+  "\004stop\022\024.example.HttpRequest\032\025.example.Ht"
+  "tpResponse\0227\n\010getstats\022\024.example.HttpReq"
+  "uest\032\025.example.HttpResponse2G\n\016HttpSSESe"
+  "rvice\0225\n\006stream\022\024.example.HttpRequest\032\025."
+  "example.HttpResponseb\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_http_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_http_2eproto = {
-    false, false, 518, descriptor_table_protodef_http_2eproto,
+    false, false, 668, descriptor_table_protodef_http_2eproto,
     "http.proto",
-    &descriptor_table_http_2eproto_once, nullptr, 0, 2,
+    &descriptor_table_http_2eproto_once, nullptr, 0, 5,
     schemas, file_default_instances, TableStruct_http_2eproto::offsets,
     file_level_metadata_http_2eproto, file_level_enum_descriptors_http_2eproto,
     file_level_service_descriptors_http_2eproto,
@@ -186,428 +266,784 @@ const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*HttpResponse::GetClassData() c
 
 // ===================================================================
 
-HttpService::~HttpService() {}
+class Info::_Internal {
+ public:
+};
 
-const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* HttpService::descriptor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_http_2eproto);
-  return file_level_service_descriptors_http_2eproto[0];
+Info::Info(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:example.Info)
 }
+Info::Info(const Info& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Info* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.name_){}
+    , decltype(_impl_.num_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
 
-const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* HttpService::GetDescriptor() {
-  return descriptor();
-}
-
-void HttpService::Echo(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                         const ::example::HttpRequest*,
-                         ::example::HttpResponse*,
-                         ::google::protobuf::Closure* done) {
-  controller->SetFailed("Method Echo() not implemented.");
-  done->Run();
-}
-
-void HttpService::EchoProtobuf(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                         const ::example::HttpRequest*,
-                         ::example::HttpResponse*,
-                         ::google::protobuf::Closure* done) {
-  controller->SetFailed("Method EchoProtobuf() not implemented.");
-  done->Run();
-}
-
-void HttpService::CallMethod(const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method,
-                             ::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                             const ::PROTOBUF_NAMESPACE_ID::Message* request,
-                             ::PROTOBUF_NAMESPACE_ID::Message* response,
-                             ::google::protobuf::Closure* done) {
-  GOOGLE_DCHECK_EQ(method->service(), file_level_service_descriptors_http_2eproto[0]);
-  switch(method->index()) {
-    case 0:
-      Echo(controller,
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::example::HttpRequest*>(
-                 request),
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::example::HttpResponse*>(
-                 response),
-             done);
-      break;
-    case 1:
-      EchoProtobuf(controller,
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::example::HttpRequest*>(
-                 request),
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::example::HttpResponse*>(
-                 response),
-             done);
-      break;
-    default:
-      GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
-      break;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_name().empty()) {
+    _this->_impl_.name_.Set(from._internal_name(), 
+      _this->GetArenaForAllocation());
   }
+  _this->_impl_.num_ = from._impl_.num_;
+  // @@protoc_insertion_point(copy_constructor:example.Info)
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message& HttpService::GetRequestPrototype(
-    const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method) const {
-  GOOGLE_DCHECK_EQ(method->service(), descriptor());
-  switch(method->index()) {
-    case 0:
-      return ::example::HttpRequest::default_instance();
-    case 1:
-      return ::example::HttpRequest::default_instance();
-    default:
-      GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
-      return *::PROTOBUF_NAMESPACE_ID::MessageFactory::generated_factory()
-          ->GetPrototype(method->input_type());
+inline void Info::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.name_){}
+    , decltype(_impl_.num_){0u}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+  _impl_.name_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.name_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+}
+
+Info::~Info() {
+  // @@protoc_insertion_point(destructor:example.Info)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
   }
+  SharedDtor();
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message& HttpService::GetResponsePrototype(
-    const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method) const {
-  GOOGLE_DCHECK_EQ(method->service(), descriptor());
-  switch(method->index()) {
-    case 0:
-      return ::example::HttpResponse::default_instance();
-    case 1:
-      return ::example::HttpResponse::default_instance();
-    default:
-      GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
-      return *::PROTOBUF_NAMESPACE_ID::MessageFactory::generated_factory()
-          ->GetPrototype(method->output_type());
+inline void Info::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.name_.Destroy();
+}
+
+void Info::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void Info::Clear() {
+// @@protoc_insertion_point(message_clear_start:example.Info)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.name_.ClearToEmpty();
+  _impl_.num_ = 0u;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Info::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // string name = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_name();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "example.Info.name"));
+        } else
+          goto handle_unusual;
+        continue;
+      // uint32 num = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
+          _impl_.num_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
+}
+
+uint8_t* Info::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:example.Info)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string name = 1;
+  if (!this->_internal_name().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_name().data(), static_cast<int>(this->_internal_name().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "example.Info.name");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_name(), target);
   }
+
+  // uint32 num = 2;
+  if (this->_internal_num() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_num(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:example.Info)
+  return target;
 }
 
-HttpService_Stub::HttpService_Stub(::PROTOBUF_NAMESPACE_ID::RpcChannel* channel)
-  : channel_(channel), owns_channel_(false) {}
-HttpService_Stub::HttpService_Stub(
-    ::PROTOBUF_NAMESPACE_ID::RpcChannel* channel,
-    ::PROTOBUF_NAMESPACE_ID::Service::ChannelOwnership ownership)
-  : channel_(channel),
-    owns_channel_(ownership == ::PROTOBUF_NAMESPACE_ID::Service::STUB_OWNS_CHANNEL) {}
-HttpService_Stub::~HttpService_Stub() {
-  if (owns_channel_) delete channel_;
+size_t Info::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:example.Info)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string name = 1;
+  if (!this->_internal_name().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_name());
+  }
+
+  // uint32 num = 2;
+  if (this->_internal_num() != 0) {
+    total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_num());
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void HttpService_Stub::Echo(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                              const ::example::HttpRequest* request,
-                              ::example::HttpResponse* response,
-                              ::google::protobuf::Closure* done) {
-  channel_->CallMethod(descriptor()->method(0),
-                       controller, request, response, done);
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Info::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    Info::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Info::GetClassData() const { return &_class_data_; }
+
+
+void Info::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<Info*>(&to_msg);
+  auto& from = static_cast<const Info&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:example.Info)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_name().empty()) {
+    _this->_internal_set_name(from._internal_name());
+  }
+  if (from._internal_num() != 0) {
+    _this->_internal_set_num(from._internal_num());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
-void HttpService_Stub::EchoProtobuf(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                              const ::example::HttpRequest* request,
-                              ::example::HttpResponse* response,
-                              ::google::protobuf::Closure* done) {
-  channel_->CallMethod(descriptor()->method(1),
-                       controller, request, response, done);
+
+void Info::CopyFrom(const Info& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:example.Info)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
+
+bool Info::IsInitialized() const {
+  return true;
+}
+
+void Info::InternalSwap(Info* other) {
+  using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.name_, lhs_arena,
+      &other->_impl_.name_, rhs_arena
+  );
+  swap(_impl_.num_, other->_impl_.num_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Info::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_http_2eproto_getter, &descriptor_table_http_2eproto_once,
+      file_level_metadata_http_2eproto[2]);
+}
+
 // ===================================================================
 
-FileService::~FileService() {}
+class Point::_Internal {
+ public:
+  static const ::example::Info& z(const Point* msg);
+};
 
-const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* FileService::descriptor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_http_2eproto);
-  return file_level_service_descriptors_http_2eproto[1];
+const ::example::Info&
+Point::_Internal::z(const Point* msg) {
+  return *msg->_impl_.z_;
 }
-
-const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* FileService::GetDescriptor() {
-  return descriptor();
+Point::Point(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:example.Point)
 }
+Point::Point(const Point& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Point* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.z_){nullptr}
+    , decltype(_impl_.m_){}
+    , decltype(_impl_.y_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
 
-void FileService::default_method(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                         const ::example::HttpRequest*,
-                         ::example::HttpResponse*,
-                         ::google::protobuf::Closure* done) {
-  controller->SetFailed("Method default_method() not implemented.");
-  done->Run();
-}
-
-void FileService::CallMethod(const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method,
-                             ::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                             const ::PROTOBUF_NAMESPACE_ID::Message* request,
-                             ::PROTOBUF_NAMESPACE_ID::Message* response,
-                             ::google::protobuf::Closure* done) {
-  GOOGLE_DCHECK_EQ(method->service(), file_level_service_descriptors_http_2eproto[1]);
-  switch(method->index()) {
-    case 0:
-      default_method(controller,
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::example::HttpRequest*>(
-                 request),
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::example::HttpResponse*>(
-                 response),
-             done);
-      break;
-    default:
-      GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
-      break;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_z()) {
+    _this->_impl_.z_ = new ::example::Info(*from._impl_.z_);
   }
+  ::memcpy(&_impl_.m_, &from._impl_.m_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.y_) -
+    reinterpret_cast<char*>(&_impl_.m_)) + sizeof(_impl_.y_));
+  // @@protoc_insertion_point(copy_constructor:example.Point)
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message& FileService::GetRequestPrototype(
-    const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method) const {
-  GOOGLE_DCHECK_EQ(method->service(), descriptor());
-  switch(method->index()) {
-    case 0:
-      return ::example::HttpRequest::default_instance();
-    default:
-      GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
-      return *::PROTOBUF_NAMESPACE_ID::MessageFactory::generated_factory()
-          ->GetPrototype(method->input_type());
+inline void Point::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.z_){nullptr}
+    , decltype(_impl_.m_){0}
+    , decltype(_impl_.y_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+Point::~Point() {
+  // @@protoc_insertion_point(destructor:example.Point)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
   }
+  SharedDtor();
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message& FileService::GetResponsePrototype(
-    const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method) const {
-  GOOGLE_DCHECK_EQ(method->service(), descriptor());
-  switch(method->index()) {
-    case 0:
-      return ::example::HttpResponse::default_instance();
-    default:
-      GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
-      return *::PROTOBUF_NAMESPACE_ID::MessageFactory::generated_factory()
-          ->GetPrototype(method->output_type());
+inline void Point::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.z_;
+}
+
+void Point::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void Point::Clear() {
+// @@protoc_insertion_point(message_clear_start:example.Point)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaForAllocation() == nullptr && _impl_.z_ != nullptr) {
+    delete _impl_.z_;
   }
+  _impl_.z_ = nullptr;
+  ::memset(&_impl_.m_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.y_) -
+      reinterpret_cast<char*>(&_impl_.m_)) + sizeof(_impl_.y_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-FileService_Stub::FileService_Stub(::PROTOBUF_NAMESPACE_ID::RpcChannel* channel)
-  : channel_(channel), owns_channel_(false) {}
-FileService_Stub::FileService_Stub(
-    ::PROTOBUF_NAMESPACE_ID::RpcChannel* channel,
-    ::PROTOBUF_NAMESPACE_ID::Service::ChannelOwnership ownership)
-  : channel_(channel),
-    owns_channel_(ownership == ::PROTOBUF_NAMESPACE_ID::Service::STUB_OWNS_CHANNEL) {}
-FileService_Stub::~FileService_Stub() {
-  if (owns_channel_) delete channel_;
+const char* Point::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // double m = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 9)) {
+          _impl_.m_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else
+          goto handle_unusual;
+        continue;
+      // double y = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 17)) {
+          _impl_.y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else
+          goto handle_unusual;
+        continue;
+      // .example.Info z = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_z(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-void FileService_Stub::default_method(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                              const ::example::HttpRequest* request,
-                              ::example::HttpResponse* response,
-                              ::google::protobuf::Closure* done) {
-  channel_->CallMethod(descriptor()->method(0),
-                       controller, request, response, done);
+uint8_t* Point::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:example.Point)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // double m = 1;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_m = this->_internal_m();
+  uint64_t raw_m;
+  memcpy(&raw_m, &tmp_m, sizeof(tmp_m));
+  if (raw_m != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(1, this->_internal_m(), target);
+  }
+
+  // double y = 2;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_y = this->_internal_y();
+  uint64_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(2, this->_internal_y(), target);
+  }
+
+  // .example.Info z = 3;
+  if (this->_internal_has_z()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, _Internal::z(this),
+        _Internal::z(this).GetCachedSize(), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:example.Point)
+  return target;
 }
+
+size_t Point::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:example.Point)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .example.Info z = 3;
+  if (this->_internal_has_z()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.z_);
+  }
+
+  // double m = 1;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_m = this->_internal_m();
+  uint64_t raw_m;
+  memcpy(&raw_m, &tmp_m, sizeof(tmp_m));
+  if (raw_m != 0) {
+    total_size += 1 + 8;
+  }
+
+  // double y = 2;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_y = this->_internal_y();
+  uint64_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    total_size += 1 + 8;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
+}
+
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Point::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    Point::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Point::GetClassData() const { return &_class_data_; }
+
+
+void Point::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<Point*>(&to_msg);
+  auto& from = static_cast<const Point&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:example.Point)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_z()) {
+    _this->_internal_mutable_z()->::example::Info::MergeFrom(
+        from._internal_z());
+  }
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_m = from._internal_m();
+  uint64_t raw_m;
+  memcpy(&raw_m, &tmp_m, sizeof(tmp_m));
+  if (raw_m != 0) {
+    _this->_internal_set_m(from._internal_m());
+  }
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_y = from._internal_y();
+  uint64_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    _this->_internal_set_y(from._internal_y());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Point::CopyFrom(const Point& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:example.Point)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Point::IsInitialized() const {
+  return true;
+}
+
+void Point::InternalSwap(Point* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Point, _impl_.y_)
+      + sizeof(Point::_impl_.y_)
+      - PROTOBUF_FIELD_OFFSET(Point, _impl_.z_)>(
+          reinterpret_cast<char*>(&_impl_.z_),
+          reinterpret_cast<char*>(&other->_impl_.z_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Point::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_http_2eproto_getter, &descriptor_table_http_2eproto_once,
+      file_level_metadata_http_2eproto[3]);
+}
+
 // ===================================================================
 
-QueueService::~QueueService() {}
+class Get::_Internal {
+ public:
+  static const ::example::Info& z(const Get* msg);
+};
 
-const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* QueueService::descriptor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_http_2eproto);
-  return file_level_service_descriptors_http_2eproto[2];
+const ::example::Info&
+Get::_Internal::z(const Get* msg) {
+  return *msg->_impl_.z_;
 }
-
-const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* QueueService::GetDescriptor() {
-  return descriptor();
+Get::Get(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                         bool is_message_owned)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+  SharedCtor(arena, is_message_owned);
+  // @@protoc_insertion_point(arena_constructor:example.Get)
 }
+Get::Get(const Get& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  Get* const _this = this; (void)_this;
+  new (&_impl_) Impl_{
+      decltype(_impl_.z_){nullptr}
+    , decltype(_impl_.x_){}
+    , decltype(_impl_.y_){}
+    , /*decltype(_impl_._cached_size_)*/{}};
 
-void QueueService::start(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                         const ::example::HttpRequest*,
-                         ::example::HttpResponse*,
-                         ::google::protobuf::Closure* done) {
-  controller->SetFailed("Method start() not implemented.");
-  done->Run();
-}
-
-void QueueService::stop(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                         const ::example::HttpRequest*,
-                         ::example::HttpResponse*,
-                         ::google::protobuf::Closure* done) {
-  controller->SetFailed("Method stop() not implemented.");
-  done->Run();
-}
-
-void QueueService::getstats(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                         const ::example::HttpRequest*,
-                         ::example::HttpResponse*,
-                         ::google::protobuf::Closure* done) {
-  controller->SetFailed("Method getstats() not implemented.");
-  done->Run();
-}
-
-void QueueService::CallMethod(const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method,
-                             ::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                             const ::PROTOBUF_NAMESPACE_ID::Message* request,
-                             ::PROTOBUF_NAMESPACE_ID::Message* response,
-                             ::google::protobuf::Closure* done) {
-  GOOGLE_DCHECK_EQ(method->service(), file_level_service_descriptors_http_2eproto[2]);
-  switch(method->index()) {
-    case 0:
-      start(controller,
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::example::HttpRequest*>(
-                 request),
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::example::HttpResponse*>(
-                 response),
-             done);
-      break;
-    case 1:
-      stop(controller,
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::example::HttpRequest*>(
-                 request),
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::example::HttpResponse*>(
-                 response),
-             done);
-      break;
-    case 2:
-      getstats(controller,
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::example::HttpRequest*>(
-                 request),
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::example::HttpResponse*>(
-                 response),
-             done);
-      break;
-    default:
-      GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
-      break;
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  if (from._internal_has_z()) {
+    _this->_impl_.z_ = new ::example::Info(*from._impl_.z_);
   }
+  ::memcpy(&_impl_.x_, &from._impl_.x_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.y_) -
+    reinterpret_cast<char*>(&_impl_.x_)) + sizeof(_impl_.y_));
+  // @@protoc_insertion_point(copy_constructor:example.Get)
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message& QueueService::GetRequestPrototype(
-    const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method) const {
-  GOOGLE_DCHECK_EQ(method->service(), descriptor());
-  switch(method->index()) {
-    case 0:
-      return ::example::HttpRequest::default_instance();
-    case 1:
-      return ::example::HttpRequest::default_instance();
-    case 2:
-      return ::example::HttpRequest::default_instance();
-    default:
-      GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
-      return *::PROTOBUF_NAMESPACE_ID::MessageFactory::generated_factory()
-          ->GetPrototype(method->input_type());
+inline void Get::SharedCtor(
+    ::_pb::Arena* arena, bool is_message_owned) {
+  (void)arena;
+  (void)is_message_owned;
+  new (&_impl_) Impl_{
+      decltype(_impl_.z_){nullptr}
+    , decltype(_impl_.x_){0}
+    , decltype(_impl_.y_){0}
+    , /*decltype(_impl_._cached_size_)*/{}
+  };
+}
+
+Get::~Get() {
+  // @@protoc_insertion_point(destructor:example.Get)
+  if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
+  (void)arena;
+    return;
   }
+  SharedDtor();
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message& QueueService::GetResponsePrototype(
-    const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method) const {
-  GOOGLE_DCHECK_EQ(method->service(), descriptor());
-  switch(method->index()) {
-    case 0:
-      return ::example::HttpResponse::default_instance();
-    case 1:
-      return ::example::HttpResponse::default_instance();
-    case 2:
-      return ::example::HttpResponse::default_instance();
-    default:
-      GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
-      return *::PROTOBUF_NAMESPACE_ID::MessageFactory::generated_factory()
-          ->GetPrototype(method->output_type());
+inline void Get::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  if (this != internal_default_instance()) delete _impl_.z_;
+}
+
+void Get::SetCachedSize(int size) const {
+  _impl_._cached_size_.Set(size);
+}
+
+void Get::Clear() {
+// @@protoc_insertion_point(message_clear_start:example.Get)
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (GetArenaForAllocation() == nullptr && _impl_.z_ != nullptr) {
+    delete _impl_.z_;
   }
+  _impl_.z_ = nullptr;
+  ::memset(&_impl_.x_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&_impl_.y_) -
+      reinterpret_cast<char*>(&_impl_.x_)) + sizeof(_impl_.y_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-QueueService_Stub::QueueService_Stub(::PROTOBUF_NAMESPACE_ID::RpcChannel* channel)
-  : channel_(channel), owns_channel_(false) {}
-QueueService_Stub::QueueService_Stub(
-    ::PROTOBUF_NAMESPACE_ID::RpcChannel* channel,
-    ::PROTOBUF_NAMESPACE_ID::Service::ChannelOwnership ownership)
-  : channel_(channel),
-    owns_channel_(ownership == ::PROTOBUF_NAMESPACE_ID::Service::STUB_OWNS_CHANNEL) {}
-QueueService_Stub::~QueueService_Stub() {
-  if (owns_channel_) delete channel_;
+const char* Get::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    uint32_t tag;
+    ptr = ::_pbi::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // double x = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 9)) {
+          _impl_.x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else
+          goto handle_unusual;
+        continue;
+      // double y = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 17)) {
+          _impl_.y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else
+          goto handle_unusual;
+        continue;
+      // .example.Info z = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 26)) {
+          ptr = ctx->ParseMessage(_internal_mutable_z(), ptr);
+          CHK_(ptr);
+        } else
+          goto handle_unusual;
+        continue;
+      default:
+        goto handle_unusual;
+    }  // switch
+  handle_unusual:
+    if ((tag == 0) || ((tag & 7) == 4)) {
+      CHK_(ptr);
+      ctx->SetLastTag(tag);
+      goto message_done;
+    }
+    ptr = UnknownFieldParse(
+        tag,
+        _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+        ptr, ctx);
+    CHK_(ptr != nullptr);
+  }  // while
+message_done:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto message_done;
+#undef CHK_
 }
 
-void QueueService_Stub::start(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                              const ::example::HttpRequest* request,
-                              ::example::HttpResponse* response,
-                              ::google::protobuf::Closure* done) {
-  channel_->CallMethod(descriptor()->method(0),
-                       controller, request, response, done);
-}
-void QueueService_Stub::stop(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                              const ::example::HttpRequest* request,
-                              ::example::HttpResponse* response,
-                              ::google::protobuf::Closure* done) {
-  channel_->CallMethod(descriptor()->method(1),
-                       controller, request, response, done);
-}
-void QueueService_Stub::getstats(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                              const ::example::HttpRequest* request,
-                              ::example::HttpResponse* response,
-                              ::google::protobuf::Closure* done) {
-  channel_->CallMethod(descriptor()->method(2),
-                       controller, request, response, done);
-}
-// ===================================================================
+uint8_t* Get::_InternalSerialize(
+    uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:example.Get)
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
 
-HttpSSEService::~HttpSSEService() {}
-
-const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* HttpSSEService::descriptor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_http_2eproto);
-  return file_level_service_descriptors_http_2eproto[3];
-}
-
-const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* HttpSSEService::GetDescriptor() {
-  return descriptor();
-}
-
-void HttpSSEService::stream(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                         const ::example::HttpRequest*,
-                         ::example::HttpResponse*,
-                         ::google::protobuf::Closure* done) {
-  controller->SetFailed("Method stream() not implemented.");
-  done->Run();
-}
-
-void HttpSSEService::CallMethod(const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method,
-                             ::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                             const ::PROTOBUF_NAMESPACE_ID::Message* request,
-                             ::PROTOBUF_NAMESPACE_ID::Message* response,
-                             ::google::protobuf::Closure* done) {
-  GOOGLE_DCHECK_EQ(method->service(), file_level_service_descriptors_http_2eproto[3]);
-  switch(method->index()) {
-    case 0:
-      stream(controller,
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<const ::example::HttpRequest*>(
-                 request),
-             ::PROTOBUF_NAMESPACE_ID::internal::DownCast<::example::HttpResponse*>(
-                 response),
-             done);
-      break;
-    default:
-      GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
-      break;
+  // double x = 1;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_x = this->_internal_x();
+  uint64_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(1, this->_internal_x(), target);
   }
-}
 
-const ::PROTOBUF_NAMESPACE_ID::Message& HttpSSEService::GetRequestPrototype(
-    const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method) const {
-  GOOGLE_DCHECK_EQ(method->service(), descriptor());
-  switch(method->index()) {
-    case 0:
-      return ::example::HttpRequest::default_instance();
-    default:
-      GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
-      return *::PROTOBUF_NAMESPACE_ID::MessageFactory::generated_factory()
-          ->GetPrototype(method->input_type());
+  // double y = 2;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_y = this->_internal_y();
+  uint64_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteDoubleToArray(2, this->_internal_y(), target);
   }
-}
 
-const ::PROTOBUF_NAMESPACE_ID::Message& HttpSSEService::GetResponsePrototype(
-    const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method) const {
-  GOOGLE_DCHECK_EQ(method->service(), descriptor());
-  switch(method->index()) {
-    case 0:
-      return ::example::HttpResponse::default_instance();
-    default:
-      GOOGLE_LOG(FATAL) << "Bad method index; this should never happen.";
-      return *::PROTOBUF_NAMESPACE_ID::MessageFactory::generated_factory()
-          ->GetPrototype(method->output_type());
+  // .example.Info z = 3;
+  if (this->_internal_has_z()) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, _Internal::z(this),
+        _Internal::z(this).GetCachedSize(), target, stream);
   }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:example.Get)
+  return target;
 }
 
-HttpSSEService_Stub::HttpSSEService_Stub(::PROTOBUF_NAMESPACE_ID::RpcChannel* channel)
-  : channel_(channel), owns_channel_(false) {}
-HttpSSEService_Stub::HttpSSEService_Stub(
-    ::PROTOBUF_NAMESPACE_ID::RpcChannel* channel,
-    ::PROTOBUF_NAMESPACE_ID::Service::ChannelOwnership ownership)
-  : channel_(channel),
-    owns_channel_(ownership == ::PROTOBUF_NAMESPACE_ID::Service::STUB_OWNS_CHANNEL) {}
-HttpSSEService_Stub::~HttpSSEService_Stub() {
-  if (owns_channel_) delete channel_;
+size_t Get::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:example.Get)
+  size_t total_size = 0;
+
+  uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .example.Info z = 3;
+  if (this->_internal_has_z()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *_impl_.z_);
+  }
+
+  // double x = 1;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_x = this->_internal_x();
+  uint64_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    total_size += 1 + 8;
+  }
+
+  // double y = 2;
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_y = this->_internal_y();
+  uint64_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    total_size += 1 + 8;
+  }
+
+  return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-void HttpSSEService_Stub::stream(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                              const ::example::HttpRequest* request,
-                              ::example::HttpResponse* response,
-                              ::google::protobuf::Closure* done) {
-  channel_->CallMethod(descriptor()->method(0),
-                       controller, request, response, done);
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Get::_class_data_ = {
+    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSourceCheck,
+    Get::MergeImpl
+};
+const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Get::GetClassData() const { return &_class_data_; }
+
+
+void Get::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg) {
+  auto* const _this = static_cast<Get*>(&to_msg);
+  auto& from = static_cast<const Get&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:example.Get)
+  GOOGLE_DCHECK_NE(&from, _this);
+  uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from._internal_has_z()) {
+    _this->_internal_mutable_z()->::example::Info::MergeFrom(
+        from._internal_z());
+  }
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_x = from._internal_x();
+  uint64_t raw_x;
+  memcpy(&raw_x, &tmp_x, sizeof(tmp_x));
+  if (raw_x != 0) {
+    _this->_internal_set_x(from._internal_x());
+  }
+  static_assert(sizeof(uint64_t) == sizeof(double), "Code assumes uint64_t and double are the same size.");
+  double tmp_y = from._internal_y();
+  uint64_t raw_y;
+  memcpy(&raw_y, &tmp_y, sizeof(tmp_y));
+  if (raw_y != 0) {
+    _this->_internal_set_y(from._internal_y());
+  }
+  _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Get::CopyFrom(const Get& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:example.Get)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Get::IsInitialized() const {
+  return true;
+}
+
+void Get::InternalSwap(Get* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Get, _impl_.y_)
+      + sizeof(Get::_impl_.y_)
+      - PROTOBUF_FIELD_OFFSET(Get, _impl_.z_)>(
+          reinterpret_cast<char*>(&_impl_.z_),
+          reinterpret_cast<char*>(&other->_impl_.z_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Get::GetMetadata() const {
+  return ::_pbi::AssignDescriptors(
+      &descriptor_table_http_2eproto_getter, &descriptor_table_http_2eproto_once,
+      file_level_metadata_http_2eproto[4]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -620,6 +1056,18 @@ Arena::CreateMaybeMessage< ::example::HttpRequest >(Arena* arena) {
 template<> PROTOBUF_NOINLINE ::example::HttpResponse*
 Arena::CreateMaybeMessage< ::example::HttpResponse >(Arena* arena) {
   return Arena::CreateMessageInternal< ::example::HttpResponse >(arena);
+}
+template<> PROTOBUF_NOINLINE ::example::Info*
+Arena::CreateMaybeMessage< ::example::Info >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::example::Info >(arena);
+}
+template<> PROTOBUF_NOINLINE ::example::Point*
+Arena::CreateMaybeMessage< ::example::Point >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::example::Point >(arena);
+}
+template<> PROTOBUF_NOINLINE ::example::Get*
+Arena::CreateMaybeMessage< ::example::Get >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::example::Get >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

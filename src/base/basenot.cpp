@@ -1,5 +1,5 @@
 #include "fmt/format.h"
-
+#include <chrono>
 int main(int argc, char* argv[]) {
   {
 
@@ -23,5 +23,7 @@ int main(int argc, char* argv[]) {
     sf.reset();
     if (sf) fmt::print("sf reset{}\n", *sf);
   }
-  return 0;
+  auto time = std::chrono::steady_clock::now();
+  time.time_since_epoch().count();
+  fmt::print("time {0} {1}\n", time.time_since_epoch().count(),time.time_since_epoch().zero());
 }

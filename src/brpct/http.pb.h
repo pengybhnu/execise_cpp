@@ -30,7 +30,6 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
-#include <google/protobuf/service.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -47,16 +46,28 @@ struct TableStruct_http_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_http_2eproto;
 namespace example {
+class Get;
+struct GetDefaultTypeInternal;
+extern GetDefaultTypeInternal _Get_default_instance_;
 class HttpRequest;
 struct HttpRequestDefaultTypeInternal;
 extern HttpRequestDefaultTypeInternal _HttpRequest_default_instance_;
 class HttpResponse;
 struct HttpResponseDefaultTypeInternal;
 extern HttpResponseDefaultTypeInternal _HttpResponse_default_instance_;
+class Info;
+struct InfoDefaultTypeInternal;
+extern InfoDefaultTypeInternal _Info_default_instance_;
+class Point;
+struct PointDefaultTypeInternal;
+extern PointDefaultTypeInternal _Point_default_instance_;
 }  // namespace example
 PROTOBUF_NAMESPACE_OPEN
+template<> ::example::Get* Arena::CreateMaybeMessage<::example::Get>(Arena*);
 template<> ::example::HttpRequest* Arena::CreateMaybeMessage<::example::HttpRequest>(Arena*);
 template<> ::example::HttpResponse* Arena::CreateMaybeMessage<::example::HttpResponse>(Arena*);
+template<> ::example::Info* Arena::CreateMaybeMessage<::example::Info>(Arena*);
+template<> ::example::Point* Arena::CreateMaybeMessage<::example::Point>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace example {
 
@@ -90,13 +101,6 @@ class HttpRequest final :
       CopyFrom(from);
     }
     return *this;
-  }
-
-  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
-  }
-  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
   }
 
   static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
@@ -217,13 +221,6 @@ class HttpResponse final :
     return *this;
   }
 
-  inline const ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance);
-  }
-  inline ::PROTOBUF_NAMESPACE_ID::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
-  }
-
   static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
     return GetDescriptor();
   }
@@ -310,266 +307,528 @@ class HttpResponse final :
   };
   friend struct ::TableStruct_http_2eproto;
 };
-// ===================================================================
-
-class HttpService_Stub;
-
-class HttpService : public ::PROTOBUF_NAMESPACE_ID::Service {
- protected:
-  // This class should be treated as an abstract interface.
-  inline HttpService() {};
- public:
-  virtual ~HttpService();
-
-  typedef HttpService_Stub Stub;
-
-  static const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* descriptor();
-
-  virtual void Echo(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::example::HttpRequest* request,
-                       ::example::HttpResponse* response,
-                       ::google::protobuf::Closure* done);
-  virtual void EchoProtobuf(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::example::HttpRequest* request,
-                       ::example::HttpResponse* response,
-                       ::google::protobuf::Closure* done);
-
-  // implements Service ----------------------------------------------
-
-  const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* GetDescriptor();
-  void CallMethod(const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method,
-                  ::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                  const ::PROTOBUF_NAMESPACE_ID::Message* request,
-                  ::PROTOBUF_NAMESPACE_ID::Message* response,
-                  ::google::protobuf::Closure* done);
-  const ::PROTOBUF_NAMESPACE_ID::Message& GetRequestPrototype(
-    const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method) const;
-  const ::PROTOBUF_NAMESPACE_ID::Message& GetResponsePrototype(
-    const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method) const;
-
- private:
-  GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(HttpService);
-};
-
-class HttpService_Stub : public HttpService {
- public:
-  HttpService_Stub(::PROTOBUF_NAMESPACE_ID::RpcChannel* channel);
-  HttpService_Stub(::PROTOBUF_NAMESPACE_ID::RpcChannel* channel,
-                   ::PROTOBUF_NAMESPACE_ID::Service::ChannelOwnership ownership);
-  ~HttpService_Stub();
-
-  inline ::PROTOBUF_NAMESPACE_ID::RpcChannel* channel() { return channel_; }
-
-  // implements HttpService ------------------------------------------
-
-  void Echo(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::example::HttpRequest* request,
-                       ::example::HttpResponse* response,
-                       ::google::protobuf::Closure* done);
-  void EchoProtobuf(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::example::HttpRequest* request,
-                       ::example::HttpResponse* response,
-                       ::google::protobuf::Closure* done);
- private:
-  ::PROTOBUF_NAMESPACE_ID::RpcChannel* channel_;
-  bool owns_channel_;
-  GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(HttpService_Stub);
-};
-
-
 // -------------------------------------------------------------------
 
-class FileService_Stub;
-
-class FileService : public ::PROTOBUF_NAMESPACE_ID::Service {
- protected:
-  // This class should be treated as an abstract interface.
-  inline FileService() {};
+class Info final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:example.Info) */ {
  public:
-  virtual ~FileService();
+  inline Info() : Info(nullptr) {}
+  ~Info() override;
+  explicit PROTOBUF_CONSTEXPR Info(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  typedef FileService_Stub Stub;
+  Info(const Info& from);
+  Info(Info&& from) noexcept
+    : Info() {
+    *this = ::std::move(from);
+  }
 
-  static const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* descriptor();
+  inline Info& operator=(const Info& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Info& operator=(Info&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
 
-  virtual void default_method(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::example::HttpRequest* request,
-                       ::example::HttpResponse* response,
-                       ::google::protobuf::Closure* done);
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Info& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Info* internal_default_instance() {
+    return reinterpret_cast<const Info*>(
+               &_Info_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
 
-  // implements Service ----------------------------------------------
+  friend void swap(Info& a, Info& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Info* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Info* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
 
-  const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* GetDescriptor();
-  void CallMethod(const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method,
-                  ::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                  const ::PROTOBUF_NAMESPACE_ID::Message* request,
-                  ::PROTOBUF_NAMESPACE_ID::Message* response,
-                  ::google::protobuf::Closure* done);
-  const ::PROTOBUF_NAMESPACE_ID::Message& GetRequestPrototype(
-    const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method) const;
-  const ::PROTOBUF_NAMESPACE_ID::Message& GetResponsePrototype(
-    const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method) const;
+  // implements Message ----------------------------------------------
 
+  Info* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Info>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Info& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const Info& from) {
+    Info::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Info* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "example.Info";
+  }
+  protected:
+  explicit Info(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNameFieldNumber = 1,
+    kNumFieldNumber = 2,
+  };
+  // string name = 1;
+  void clear_name();
+  const std::string& name() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_name(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* name);
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(const std::string& value);
+  std::string* _internal_mutable_name();
+  public:
+
+  // uint32 num = 2;
+  void clear_num();
+  uint32_t num() const;
+  void set_num(uint32_t value);
+  private:
+  uint32_t _internal_num() const;
+  void _internal_set_num(uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:example.Info)
  private:
-  GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(FileService);
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
+    uint32_t num_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_http_2eproto;
 };
-
-class FileService_Stub : public FileService {
- public:
-  FileService_Stub(::PROTOBUF_NAMESPACE_ID::RpcChannel* channel);
-  FileService_Stub(::PROTOBUF_NAMESPACE_ID::RpcChannel* channel,
-                   ::PROTOBUF_NAMESPACE_ID::Service::ChannelOwnership ownership);
-  ~FileService_Stub();
-
-  inline ::PROTOBUF_NAMESPACE_ID::RpcChannel* channel() { return channel_; }
-
-  // implements FileService ------------------------------------------
-
-  void default_method(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::example::HttpRequest* request,
-                       ::example::HttpResponse* response,
-                       ::google::protobuf::Closure* done);
- private:
-  ::PROTOBUF_NAMESPACE_ID::RpcChannel* channel_;
-  bool owns_channel_;
-  GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(FileService_Stub);
-};
-
-
 // -------------------------------------------------------------------
 
-class QueueService_Stub;
-
-class QueueService : public ::PROTOBUF_NAMESPACE_ID::Service {
- protected:
-  // This class should be treated as an abstract interface.
-  inline QueueService() {};
+class Point final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:example.Point) */ {
  public:
-  virtual ~QueueService();
+  inline Point() : Point(nullptr) {}
+  ~Point() override;
+  explicit PROTOBUF_CONSTEXPR Point(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  typedef QueueService_Stub Stub;
+  Point(const Point& from);
+  Point(Point&& from) noexcept
+    : Point() {
+    *this = ::std::move(from);
+  }
 
-  static const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* descriptor();
+  inline Point& operator=(const Point& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Point& operator=(Point&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
 
-  virtual void start(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::example::HttpRequest* request,
-                       ::example::HttpResponse* response,
-                       ::google::protobuf::Closure* done);
-  virtual void stop(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::example::HttpRequest* request,
-                       ::example::HttpResponse* response,
-                       ::google::protobuf::Closure* done);
-  virtual void getstats(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::example::HttpRequest* request,
-                       ::example::HttpResponse* response,
-                       ::google::protobuf::Closure* done);
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Point& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Point* internal_default_instance() {
+    return reinterpret_cast<const Point*>(
+               &_Point_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
 
-  // implements Service ----------------------------------------------
+  friend void swap(Point& a, Point& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Point* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Point* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
 
-  const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* GetDescriptor();
-  void CallMethod(const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method,
-                  ::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                  const ::PROTOBUF_NAMESPACE_ID::Message* request,
-                  ::PROTOBUF_NAMESPACE_ID::Message* response,
-                  ::google::protobuf::Closure* done);
-  const ::PROTOBUF_NAMESPACE_ID::Message& GetRequestPrototype(
-    const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method) const;
-  const ::PROTOBUF_NAMESPACE_ID::Message& GetResponsePrototype(
-    const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method) const;
+  // implements Message ----------------------------------------------
 
+  Point* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Point>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Point& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const Point& from) {
+    Point::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Point* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "example.Point";
+  }
+  protected:
+  explicit Point(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kZFieldNumber = 3,
+    kMFieldNumber = 1,
+    kYFieldNumber = 2,
+  };
+  // .example.Info z = 3;
+  bool has_z() const;
+  private:
+  bool _internal_has_z() const;
+  public:
+  void clear_z();
+  const ::example::Info& z() const;
+  PROTOBUF_NODISCARD ::example::Info* release_z();
+  ::example::Info* mutable_z();
+  void set_allocated_z(::example::Info* z);
+  private:
+  const ::example::Info& _internal_z() const;
+  ::example::Info* _internal_mutable_z();
+  public:
+  void unsafe_arena_set_allocated_z(
+      ::example::Info* z);
+  ::example::Info* unsafe_arena_release_z();
+
+  // double m = 1;
+  void clear_m();
+  double m() const;
+  void set_m(double value);
+  private:
+  double _internal_m() const;
+  void _internal_set_m(double value);
+  public:
+
+  // double y = 2;
+  void clear_y();
+  double y() const;
+  void set_y(double value);
+  private:
+  double _internal_y() const;
+  void _internal_set_y(double value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:example.Point)
  private:
-  GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(QueueService);
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::example::Info* z_;
+    double m_;
+    double y_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_http_2eproto;
 };
-
-class QueueService_Stub : public QueueService {
- public:
-  QueueService_Stub(::PROTOBUF_NAMESPACE_ID::RpcChannel* channel);
-  QueueService_Stub(::PROTOBUF_NAMESPACE_ID::RpcChannel* channel,
-                   ::PROTOBUF_NAMESPACE_ID::Service::ChannelOwnership ownership);
-  ~QueueService_Stub();
-
-  inline ::PROTOBUF_NAMESPACE_ID::RpcChannel* channel() { return channel_; }
-
-  // implements QueueService ------------------------------------------
-
-  void start(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::example::HttpRequest* request,
-                       ::example::HttpResponse* response,
-                       ::google::protobuf::Closure* done);
-  void stop(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::example::HttpRequest* request,
-                       ::example::HttpResponse* response,
-                       ::google::protobuf::Closure* done);
-  void getstats(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::example::HttpRequest* request,
-                       ::example::HttpResponse* response,
-                       ::google::protobuf::Closure* done);
- private:
-  ::PROTOBUF_NAMESPACE_ID::RpcChannel* channel_;
-  bool owns_channel_;
-  GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(QueueService_Stub);
-};
-
-
 // -------------------------------------------------------------------
 
-class HttpSSEService_Stub;
-
-class HttpSSEService : public ::PROTOBUF_NAMESPACE_ID::Service {
- protected:
-  // This class should be treated as an abstract interface.
-  inline HttpSSEService() {};
+class Get final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:example.Get) */ {
  public:
-  virtual ~HttpSSEService();
+  inline Get() : Get(nullptr) {}
+  ~Get() override;
+  explicit PROTOBUF_CONSTEXPR Get(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  typedef HttpSSEService_Stub Stub;
+  Get(const Get& from);
+  Get(Get&& from) noexcept
+    : Get() {
+    *this = ::std::move(from);
+  }
 
-  static const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* descriptor();
+  inline Get& operator=(const Get& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Get& operator=(Get&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
 
-  virtual void stream(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::example::HttpRequest* request,
-                       ::example::HttpResponse* response,
-                       ::google::protobuf::Closure* done);
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Get& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Get* internal_default_instance() {
+    return reinterpret_cast<const Get*>(
+               &_Get_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
 
-  // implements Service ----------------------------------------------
+  friend void swap(Get& a, Get& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Get* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Get* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
 
-  const ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor* GetDescriptor();
-  void CallMethod(const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method,
-                  ::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                  const ::PROTOBUF_NAMESPACE_ID::Message* request,
-                  ::PROTOBUF_NAMESPACE_ID::Message* response,
-                  ::google::protobuf::Closure* done);
-  const ::PROTOBUF_NAMESPACE_ID::Message& GetRequestPrototype(
-    const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method) const;
-  const ::PROTOBUF_NAMESPACE_ID::Message& GetResponsePrototype(
-    const ::PROTOBUF_NAMESPACE_ID::MethodDescriptor* method) const;
+  // implements Message ----------------------------------------------
 
+  Get* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Get>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Get& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const Get& from) {
+    Get::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Get* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "example.Get";
+  }
+  protected:
+  explicit Get(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kZFieldNumber = 3,
+    kXFieldNumber = 1,
+    kYFieldNumber = 2,
+  };
+  // .example.Info z = 3;
+  bool has_z() const;
+  private:
+  bool _internal_has_z() const;
+  public:
+  void clear_z();
+  const ::example::Info& z() const;
+  PROTOBUF_NODISCARD ::example::Info* release_z();
+  ::example::Info* mutable_z();
+  void set_allocated_z(::example::Info* z);
+  private:
+  const ::example::Info& _internal_z() const;
+  ::example::Info* _internal_mutable_z();
+  public:
+  void unsafe_arena_set_allocated_z(
+      ::example::Info* z);
+  ::example::Info* unsafe_arena_release_z();
+
+  // double x = 1;
+  void clear_x();
+  double x() const;
+  void set_x(double value);
+  private:
+  double _internal_x() const;
+  void _internal_set_x(double value);
+  public:
+
+  // double y = 2;
+  void clear_y();
+  double y() const;
+  void set_y(double value);
+  private:
+  double _internal_y() const;
+  void _internal_set_y(double value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:example.Get)
  private:
-  GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(HttpSSEService);
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::example::Info* z_;
+    double x_;
+    double y_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_http_2eproto;
 };
-
-class HttpSSEService_Stub : public HttpSSEService {
- public:
-  HttpSSEService_Stub(::PROTOBUF_NAMESPACE_ID::RpcChannel* channel);
-  HttpSSEService_Stub(::PROTOBUF_NAMESPACE_ID::RpcChannel* channel,
-                   ::PROTOBUF_NAMESPACE_ID::Service::ChannelOwnership ownership);
-  ~HttpSSEService_Stub();
-
-  inline ::PROTOBUF_NAMESPACE_ID::RpcChannel* channel() { return channel_; }
-
-  // implements HttpSSEService ------------------------------------------
-
-  void stream(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
-                       const ::example::HttpRequest* request,
-                       ::example::HttpResponse* response,
-                       ::google::protobuf::Closure* done);
- private:
-  ::PROTOBUF_NAMESPACE_ID::RpcChannel* channel_;
-  bool owns_channel_;
-  GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(HttpSSEService_Stub);
-};
-
-
 // ===================================================================
 
 
@@ -585,9 +844,357 @@ class HttpSSEService_Stub : public HttpSSEService {
 
 // HttpResponse
 
+// -------------------------------------------------------------------
+
+// Info
+
+// string name = 1;
+inline void Info::clear_name() {
+  _impl_.name_.ClearToEmpty();
+}
+inline const std::string& Info::name() const {
+  // @@protoc_insertion_point(field_get:example.Info.name)
+  return _internal_name();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void Info::set_name(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.name_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:example.Info.name)
+}
+inline std::string* Info::mutable_name() {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:example.Info.name)
+  return _s;
+}
+inline const std::string& Info::_internal_name() const {
+  return _impl_.name_.Get();
+}
+inline void Info::_internal_set_name(const std::string& value) {
+  
+  _impl_.name_.Set(value, GetArenaForAllocation());
+}
+inline std::string* Info::_internal_mutable_name() {
+  
+  return _impl_.name_.Mutable(GetArenaForAllocation());
+}
+inline std::string* Info::release_name() {
+  // @@protoc_insertion_point(field_release:example.Info.name)
+  return _impl_.name_.Release();
+}
+inline void Info::set_allocated_name(std::string* name) {
+  if (name != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.name_.SetAllocated(name, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.name_.IsDefault()) {
+    _impl_.name_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:example.Info.name)
+}
+
+// uint32 num = 2;
+inline void Info::clear_num() {
+  _impl_.num_ = 0u;
+}
+inline uint32_t Info::_internal_num() const {
+  return _impl_.num_;
+}
+inline uint32_t Info::num() const {
+  // @@protoc_insertion_point(field_get:example.Info.num)
+  return _internal_num();
+}
+inline void Info::_internal_set_num(uint32_t value) {
+  
+  _impl_.num_ = value;
+}
+inline void Info::set_num(uint32_t value) {
+  _internal_set_num(value);
+  // @@protoc_insertion_point(field_set:example.Info.num)
+}
+
+// -------------------------------------------------------------------
+
+// Point
+
+// double m = 1;
+inline void Point::clear_m() {
+  _impl_.m_ = 0;
+}
+inline double Point::_internal_m() const {
+  return _impl_.m_;
+}
+inline double Point::m() const {
+  // @@protoc_insertion_point(field_get:example.Point.m)
+  return _internal_m();
+}
+inline void Point::_internal_set_m(double value) {
+  
+  _impl_.m_ = value;
+}
+inline void Point::set_m(double value) {
+  _internal_set_m(value);
+  // @@protoc_insertion_point(field_set:example.Point.m)
+}
+
+// double y = 2;
+inline void Point::clear_y() {
+  _impl_.y_ = 0;
+}
+inline double Point::_internal_y() const {
+  return _impl_.y_;
+}
+inline double Point::y() const {
+  // @@protoc_insertion_point(field_get:example.Point.y)
+  return _internal_y();
+}
+inline void Point::_internal_set_y(double value) {
+  
+  _impl_.y_ = value;
+}
+inline void Point::set_y(double value) {
+  _internal_set_y(value);
+  // @@protoc_insertion_point(field_set:example.Point.y)
+}
+
+// .example.Info z = 3;
+inline bool Point::_internal_has_z() const {
+  return this != internal_default_instance() && _impl_.z_ != nullptr;
+}
+inline bool Point::has_z() const {
+  return _internal_has_z();
+}
+inline void Point::clear_z() {
+  if (GetArenaForAllocation() == nullptr && _impl_.z_ != nullptr) {
+    delete _impl_.z_;
+  }
+  _impl_.z_ = nullptr;
+}
+inline const ::example::Info& Point::_internal_z() const {
+  const ::example::Info* p = _impl_.z_;
+  return p != nullptr ? *p : reinterpret_cast<const ::example::Info&>(
+      ::example::_Info_default_instance_);
+}
+inline const ::example::Info& Point::z() const {
+  // @@protoc_insertion_point(field_get:example.Point.z)
+  return _internal_z();
+}
+inline void Point::unsafe_arena_set_allocated_z(
+    ::example::Info* z) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.z_);
+  }
+  _impl_.z_ = z;
+  if (z) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:example.Point.z)
+}
+inline ::example::Info* Point::release_z() {
+  
+  ::example::Info* temp = _impl_.z_;
+  _impl_.z_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::example::Info* Point::unsafe_arena_release_z() {
+  // @@protoc_insertion_point(field_release:example.Point.z)
+  
+  ::example::Info* temp = _impl_.z_;
+  _impl_.z_ = nullptr;
+  return temp;
+}
+inline ::example::Info* Point::_internal_mutable_z() {
+  
+  if (_impl_.z_ == nullptr) {
+    auto* p = CreateMaybeMessage<::example::Info>(GetArenaForAllocation());
+    _impl_.z_ = p;
+  }
+  return _impl_.z_;
+}
+inline ::example::Info* Point::mutable_z() {
+  ::example::Info* _msg = _internal_mutable_z();
+  // @@protoc_insertion_point(field_mutable:example.Point.z)
+  return _msg;
+}
+inline void Point::set_allocated_z(::example::Info* z) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.z_;
+  }
+  if (z) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(z);
+    if (message_arena != submessage_arena) {
+      z = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, z, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.z_ = z;
+  // @@protoc_insertion_point(field_set_allocated:example.Point.z)
+}
+
+// -------------------------------------------------------------------
+
+// Get
+
+// double x = 1;
+inline void Get::clear_x() {
+  _impl_.x_ = 0;
+}
+inline double Get::_internal_x() const {
+  return _impl_.x_;
+}
+inline double Get::x() const {
+  // @@protoc_insertion_point(field_get:example.Get.x)
+  return _internal_x();
+}
+inline void Get::_internal_set_x(double value) {
+  
+  _impl_.x_ = value;
+}
+inline void Get::set_x(double value) {
+  _internal_set_x(value);
+  // @@protoc_insertion_point(field_set:example.Get.x)
+}
+
+// double y = 2;
+inline void Get::clear_y() {
+  _impl_.y_ = 0;
+}
+inline double Get::_internal_y() const {
+  return _impl_.y_;
+}
+inline double Get::y() const {
+  // @@protoc_insertion_point(field_get:example.Get.y)
+  return _internal_y();
+}
+inline void Get::_internal_set_y(double value) {
+  
+  _impl_.y_ = value;
+}
+inline void Get::set_y(double value) {
+  _internal_set_y(value);
+  // @@protoc_insertion_point(field_set:example.Get.y)
+}
+
+// .example.Info z = 3;
+inline bool Get::_internal_has_z() const {
+  return this != internal_default_instance() && _impl_.z_ != nullptr;
+}
+inline bool Get::has_z() const {
+  return _internal_has_z();
+}
+inline void Get::clear_z() {
+  if (GetArenaForAllocation() == nullptr && _impl_.z_ != nullptr) {
+    delete _impl_.z_;
+  }
+  _impl_.z_ = nullptr;
+}
+inline const ::example::Info& Get::_internal_z() const {
+  const ::example::Info* p = _impl_.z_;
+  return p != nullptr ? *p : reinterpret_cast<const ::example::Info&>(
+      ::example::_Info_default_instance_);
+}
+inline const ::example::Info& Get::z() const {
+  // @@protoc_insertion_point(field_get:example.Get.z)
+  return _internal_z();
+}
+inline void Get::unsafe_arena_set_allocated_z(
+    ::example::Info* z) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.z_);
+  }
+  _impl_.z_ = z;
+  if (z) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:example.Get.z)
+}
+inline ::example::Info* Get::release_z() {
+  
+  ::example::Info* temp = _impl_.z_;
+  _impl_.z_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::example::Info* Get::unsafe_arena_release_z() {
+  // @@protoc_insertion_point(field_release:example.Get.z)
+  
+  ::example::Info* temp = _impl_.z_;
+  _impl_.z_ = nullptr;
+  return temp;
+}
+inline ::example::Info* Get::_internal_mutable_z() {
+  
+  if (_impl_.z_ == nullptr) {
+    auto* p = CreateMaybeMessage<::example::Info>(GetArenaForAllocation());
+    _impl_.z_ = p;
+  }
+  return _impl_.z_;
+}
+inline ::example::Info* Get::mutable_z() {
+  ::example::Info* _msg = _internal_mutable_z();
+  // @@protoc_insertion_point(field_mutable:example.Get.z)
+  return _msg;
+}
+inline void Get::set_allocated_z(::example::Info* z) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete _impl_.z_;
+  }
+  if (z) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(z);
+    if (message_arena != submessage_arena) {
+      z = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, z, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  _impl_.z_ = z;
+  // @@protoc_insertion_point(field_set_allocated:example.Get.z)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 

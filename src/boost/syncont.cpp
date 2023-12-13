@@ -1,3 +1,7 @@
+#define BOOST_THREAD_PROVIDES_FUTURE_CONTINUATION
+#define BOOST_THREAD_PROVIDES_EXECUTORS
+#define BOOST_THREAD_USES_MOVE
+
 #include <vector>
 #include <thread>
 
@@ -7,6 +11,7 @@
 #include "boost/thread/scoped_thread.hpp"
 #include "boost/thread/sync_bounded_queue.hpp"
 #include "boost/thread/synchronized_value.hpp"
+#include "boost/thread/executors/basic_thread_pool.hpp"
 #include "boost/timer/timer.hpp"
 #include "fmt/format.h"
 #include "fmt/ranges.h"
@@ -70,7 +75,12 @@ int main(int argc, char* argv[]) {
   queue.push_back(89);
   bar.wait();
   std::this_thread::sleep_for(2s);
-  fmt::println("escaple {}", t.format_string());
+  fmt::println("escaple {}", t.elapsed().user + t.elapsed().system);
   boost::shared_ptr<int> p = boost::make_shared<int>(100);
+  {
+    boost::basic_thread_pool pool(3);
+    pool.submit([](){ fmt::println("basic_thread_pool");});
+    // pool.close();
+  }
   return 0;
 }

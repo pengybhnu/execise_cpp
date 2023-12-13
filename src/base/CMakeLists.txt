@@ -129,3 +129,11 @@ target_sources(mdspandt PUBLIC ${CMAKE_SOURCE_DIR}/src/base/mdspand.cpp)
 target_compile_features(mdspandt PRIVATE  cxx_std_20)
 target_link_libraries(mdspandt CONAN_PKG::mdspan)
 
+add_executable(generate)
+target_sources(generate PUBLIC ${CMAKE_SOURCE_DIR}/src/base/generate.cpp)
+target_compile_features(generate PUBLIC  cxx_std_20)
+target_link_libraries(generate )
+
+add_executable(basenot)
+target_sources(basenot PUBLIC ${CMAKE_SOURCE_DIR}/src/base/basenot.cpp)
+target_link_libraries(basenot CONAN_PKG::fmt)
