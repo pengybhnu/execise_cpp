@@ -3,12 +3,23 @@ project(libjoy)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CONAN_DISABLE_CHECK_COMPILER ON)
+#   include(${CMAKE_BINARY_DIR}/conan.cmake)
+  include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 
-
+# conan_cmake_run(
+#     REQUIRES
+#     ${${PROJECT_NAME}_CONAN_REQUIRES}
+#     OPTIONS
+#     ${${PROJECT_NAME}_CONAN_OPTIONS}
+#     BASIC_SETUP
+#     CMAKE_TARGETS # Individual targets to link to
+#     BUILD
+#     missing
+# )
 # option(ENABLE_CONAN "Enable the Conan package manager for this project." OFF)
 # include(cmake/Conan.cmake)
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup(TARGETS)
+
 # conan_basic_setup()
 # include(cmake/CPM.cmake)
 # add_executable(taskflowtest)

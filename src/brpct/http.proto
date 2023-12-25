@@ -22,7 +22,9 @@ message Get{
   double y = 2;
   Info z = 3;
 }
-
+message Infos{
+  repeated Point points = 1;
+}
 service HttpService {
   rpc Echo(HttpRequest) returns (HttpResponse);
   rpc EchoProtobuf(HttpRequest) returns (HttpResponse);

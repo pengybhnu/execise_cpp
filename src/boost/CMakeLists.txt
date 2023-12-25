@@ -65,3 +65,7 @@ target_link_libraries(lineinter CONAN_PKG::boost)
 add_executable(futureb)
 target_sources(futureb PUBLIC ${CMAKE_SOURCE_DIR}/src/boost/futureb.cpp)
 target_link_libraries(futureb CONAN_PKG::boost)
+
+add_executable(timeasio)
+target_sources(timeasio PUBLIC ${CMAKE_SOURCE_DIR}/src/boost/timeasio.cpp)
+target_link_libraries(timeasio CONAN_PKG::boost)

@@ -54,6 +54,9 @@ leveldb/1.23
 gtest/1.14.0
 sqlite3/3.43.0
 async_simple/1.2.0
+gperftools/2.13.0
+jemalloc/5.3.0
+cpp-httplib/0.14.2
 [generators]
 # CMakeDeps
 # CMakeToolchain

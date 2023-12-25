@@ -29,5 +29,15 @@ int main(int argc, char* argv[]) {
   delete p4;
   auto gz = g.release_z();
   // delete gz;
+  example::Infos infos;
+  for (auto& p : {1, 2, 3}) {
+    auto ps = infos.add_points();
+    ps->set_m(3);
+  }
+  auto& pp = infos.points();
+  std::cout<< "p size " << pp.size() << std::endl;
+  infos.clear_points();
+  std::cout<< "p size " << pp.size() << std::endl;
+  std::cout<< "infop size " << infos.points().size() << std::endl;
   return 0;
 }

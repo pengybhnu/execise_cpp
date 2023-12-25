@@ -137,3 +137,21 @@ target_link_libraries(generate )
 add_executable(basenot)
 target_sources(basenot PUBLIC ${CMAKE_SOURCE_DIR}/src/base/basenot.cpp)
 target_link_libraries(basenot CONAN_PKG::fmt)
+
+add_executable(memoryt)
+target_sources(memoryt PUBLIC ${CMAKE_SOURCE_DIR}/src/base/tcmall.cpp)
+target_link_libraries(memoryt)
+
+add_executable(pimpl)
+target_include_directories(pimpl PUBLIC ${CMAKE_SOURCE_DIR}/src)
+target_sources(pimpl PUBLIC
+${CMAKE_SOURCE_DIR}/src/base/ifmain.cc
+${CMAKE_SOURCE_DIR}/src/base/if.cc 
+# ${CMAKE_SOURCE_DIR}/src/base/imp.cc
+)
+target_link_libraries(pimpl)
+
+# src/base/httpserverbase.cpp
+add_executable(httpser)
+target_sources(httpser PUBLIC ${CMAKE_SOURCE_DIR}/src/base/httpserverbase.cpp)
+target_link_libraries(httpser CONAN_PKG::cpp-httplib)
