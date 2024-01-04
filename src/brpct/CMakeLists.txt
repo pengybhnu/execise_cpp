@@ -50,7 +50,8 @@ add_executable(http_server2)
 target_sources(http_server2 PUBLIC ${CMAKE_SOURCE_DIR}/src/brpct/http_server.cpp
  ${PROTO_GEN_SRCS}
  )
- target_include_directories(http_server2 PRIVATE $<BUILD_INTERFACE:${brpc_BINARY_DIR}>/output/include)
+
+target_include_directories(http_server2 PRIVATE $<BUILD_INTERFACE:${brpc_BINARY_DIR}>/output/include)
 
 target_link_libraries(http_server2 
     brpc-static 

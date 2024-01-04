@@ -1,10 +1,16 @@
 cmake_minimum_required(VERSION 3.27)
 project(libjoy)
-
+# set(CMAKE_EXPERIMENTAL_CXX_MODULE_DYNDEP 1)
+# set(CMAKE_EXPERIMENTAL_CXX_SCANDEP_SOURCE "") 
+# set(CMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API "aa1f7df0-828a-4fcd-9afc-2dc80491aca7") 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CONAN_DISABLE_CHECK_COMPILER ON)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# set(CMAKE_CXX_SCAN_FOR_MODULES ON)
+
 #   include(${CMAKE_BINARY_DIR}/conan.cmake)
-  include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 
 # conan_cmake_run(
 #     REQUIRES
@@ -70,3 +76,44 @@ message(${vsomeip_SOURCE_DIR})
 message(${brpc_SOURCE_DIR})
 
 add_subdirectory(src)
+
+set(CMAKE_CXX_STANDARD 20)
+
+# file(WRITE foo.h
+# "class foo {
+# foo();
+# ~foo();
+# void helloworld();
+# };"
+# )
+
+# file(WRITE foo.cxx
+# [=[
+# #include "foo.h"
+# #include <iostream>
+# foo::foo() = default;
+# foo::~foo() = default;
+# void foo::helloworld() { std::cout << "hello world\n"; }
+# ]=]
+# )
+
+# file(WRITE main.cxx
+# [=[
+# #include "foo.h"
+
+# int main()
+# {
+#   foo f;
+#   f.helloworld();
+#   return 0;
+# }
+# ]=]
+# )
+
+# add_library(foo)
+# target_sources(foo
+#   PUBLIC
+#     FILE_SET cxx_modules TYPE CXX_MODULES FILES
+#     foo.cxx
+# )
+# add_executable(hello main.cxx)

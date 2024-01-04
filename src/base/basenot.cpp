@@ -1,8 +1,19 @@
-#include "fmt/format.h"
 #include <chrono>
+
+#include "fmt/format.h"
+namespace e1 {
+enum { Y, N, S };
+}
+namespace e2 {
+enum { Y, N, S };
+}
+enum class tenum : int { INPUT, OUTPUT, INPUT_2, OUTPUT_2 };
+class test {
+ public:
+  ~test() { fmt::print("destructor\n"); }
+};
 int main(int argc, char* argv[]) {
   {
-
     int base = 3;
     if (not(236 > base)) {
       fmt::print("not false\n");
@@ -23,7 +34,21 @@ int main(int argc, char* argv[]) {
     sf.reset();
     if (sf) fmt::print("sf reset{}\n", *sf);
   }
-  auto time = std::chrono::steady_clock::now();
-  time.time_since_epoch().count();
-  fmt::print("time {0} {1}\n", time.time_since_epoch().count(),time.time_since_epoch().zero());
+  {
+    auto time = std::chrono::steady_clock::now();
+    time.time_since_epoch().count();
+    fmt::print("time {0} {1}\n", time.time_since_epoch().count(),
+               time.time_since_epoch().zero().count());
+  }
+  int x = 0;
+  x = static_cast<int>(tenum::OUTPUT_2);
+  fmt::println("tenum {0}\n", x);
+  x = e1::N;
+  fmt::println("tenum {0}\n", x);
+  fmt::println("--------->>");
+  auto p = new test();
+  delete p;
+  fmt::println("--------->>");
+  int* test = nullptr;
+  fmt::println("--------->>{}", *test);
 }

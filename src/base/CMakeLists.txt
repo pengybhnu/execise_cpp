@@ -18,9 +18,9 @@ target_link_libraries(varmatch CONAN_PKG::fmt CONAN_PKG::boost CONAN_PKG::tl-exp
 
 add_executable(stacktraceb)
 target_sources(stacktraceb PUBLIC ${CMAKE_SOURCE_DIR}/src/base/stacktraceb.cpp)
-set_target_properties(stacktraceb PROPERTIES ENABLE_EXPORTS ON)
+# set_target_properties(stacktraceb PROPERTIES ENABLE_EXPORTS ON)
 
-# target_compile_options(stacktraceb PUBLIC "-fPIE" "-rdynamic" "-no-pie" "-fno-pie")
+target_compile_options(stacktraceb PRIVATE "-fPIE" "-no-pie" "-fno-pie")
 # target_compile_options()
 # target_link_libraries(stacktraceb)
 target_link_libraries(stacktraceb PUBLIC CONAN_PKG::boost pthread dl)
