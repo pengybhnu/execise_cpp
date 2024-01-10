@@ -55,3 +55,7 @@ target_compile_features(batonp PRIVATE cxx_std_20)
 target_link_libraries(batonp CONAN_PKG::folly)
 
 
+add_executable(batonc)
+target_sources(batonc PUBLIC ${CMAKE_SOURCE_DIR}/src/folly/batoncf.cpp)
+target_compile_features(batonc PRIVATE cxx_std_20)
+target_link_libraries(batonc CONAN_PKG::folly)

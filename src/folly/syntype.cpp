@@ -145,13 +145,15 @@ int main(int argc, char* argv[]) {
     t.join();
   }
   {
-    folly::SynchronizedPtr<std::shared_ptr<int>> pInt{std::make_shared<int>(0)};
+    folly::SynchronizedPtr<std::shared_ptr<int>> pInt;
+    pInt.wlockPointer()->reset(new int(115));
+    pInt.withWLock([](auto&& value) { fmt::println("\n---- ptr {}", value); });
     pInt.withWLock([](auto&& value) { value = 20.0; });
+    pInt.withRLock([](auto&& value) { fmt::println("\n---- ptr {}", value); });
     pInt.wlockPointer()->reset(new int(200));
+    pInt.withRLock([](auto&& value) { fmt::println("\n---- ptr {}", value); });
 
-    pInt.withRLock([](auto&& value) { fmt::println("\n---- p {}", value); });
-
-    folly::PackedSyncPtr<int> packint;
+    folly::PackedSyncPtr<int> packint;;
     packint.init(new int(20));
     packint.lock();
     packint.get();

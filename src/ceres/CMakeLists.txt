@@ -21,3 +21,8 @@ target_link_libraries(fitc CONAN_PKG::ceres-solver CONAN_PKG::glog CONAN_PKG::gf
 # target_compile_features(osqpb PUBLIC cxx_std_20)
 # target_link_libraries(osqpb ${CONAN_LIBS} )
 
+add_executable(cirfit)
+target_sources(cirfit PUBLIC ${PROJECT_SOURCE_DIR}/cirfit.cpp)
+target_include_directories(cirfit PRIVATE ${PROJECT_SOURCE_DIR})
+target_compile_features(cirfit PUBLIC cxx_std_20)
+target_link_libraries(cirfit CONAN_PKG::ceres-solver CONAN_PKG::glog CONAN_PKG::gflags)

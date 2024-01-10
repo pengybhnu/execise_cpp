@@ -155,3 +155,11 @@ target_link_libraries(pimpl)
 add_executable(httpser)
 target_sources(httpser PUBLIC ${CMAKE_SOURCE_DIR}/src/base/httpserverbase.cpp)
 target_link_libraries(httpser CONAN_PKG::cpp-httplib)
+
+add_executable(forkt)
+target_sources(forkt PUBLIC ${CMAKE_SOURCE_DIR}/src/base/forkt.cpp)
+target_link_libraries(forkt)
+
+add_executable(atomict)
+target_sources(atomict PUBLIC ${CMAKE_SOURCE_DIR}/src/base/atomict.cpp)
+target_link_libraries(atomict)
